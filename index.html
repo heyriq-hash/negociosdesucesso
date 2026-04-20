@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Negócios de Sucesso | Estrutura Digital Estratégica para Empresas</title>
+  <meta name="description" content="Estruturamos sua presença digital para que sua empresa seja encontrada, escolhida e lembrada. Protocolo completo: presença, conversão e escala." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://negociosdesucesso.com.br/" />
+  <meta property="og:title" content="Negócios de Sucesso | Estrutura Digital Estratégica" />
+  <meta property="og:description" content="Seu negócio sendo encontrado, escolhido e lembrado — todos os dias." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Negócios de Sucesso","description":"Estrutura digital estratégica para empresas que querem crescer online.","url":"https://negociosdesucesso.com.br","areaServed":"BR","serviceType":["Marketing Digital","Desenvolvimento Web","Automação de Marketing"]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+    ::selection { background: rgba(245,166,35,.3); color: #fff; }
+
+    /* ── REVEAL ────────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── PULSE-GLOW (navbar CTA + CTA final) ─────────────────────────── */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,166,35,.5); }
+      50%       { box-shadow: 0 0 0 14px rgba(245,166,35,0); }
+    }
+    .pulse-btn { animation: pulse-glow 2s infinite; }
+
+    :root {
+      --gold:     #F5A623;
+      --gold-dim: #c8831a;
+      --bg:       #080808;
+      --surface:  #0f0f0f;
+      --card:     #131313;
+      --border:   #1e1e1e;
+      --text:     #f0f0f0;
+      --muted:    #888888;
+      --radius:   14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ───────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(245,166,35,.15);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+    }
+    .nav-links a {
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+    .nav-logo {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px; font-weight: 600;
+      background: var(--gold); color: #000;
+      border: none; border-radius: 8px;
+      padding: 10px 20px; cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--gold-dim); color: #fff; transform: translateY(-1px); }
+
+    /* ── HERO ──────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Layer order (bottom → top):
+       1. canvas  (z:0)  — fallback particle network
+       2. video   (z:1)  — covers canvas when playing
+       3. overlay (z:2)  — dark film over video
+       4. glow    (z:3)  — ambient gold glow
+       5. vignette(z:3)  — edge darkening
+       6. inner   (z:10) — text / buttons
+    */
+
+    /* Fallback particle canvas */
+    #hero-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: block;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Video background */
+    #hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Dark overlay on top of video */
+    #hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.65);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Central amber glow */
+    .hero-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 680px; height: 680px;
+      background: radial-gradient(circle, rgba(245,166,35,.12) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Vignette — edges darker than center */
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 75% 65% at 50% 50%,
+        transparent 30%, rgba(8,8,8,.75) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    #hero-inner {
+      display: flex; flex-direction: column;
+      align-items: center;
+      position: relative; z-index: 10;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,166,35,.08);
+      border: 1px solid rgba(245,166,35,.25);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 11px; font-weight: 600; color: var(--gold);
+      letter-spacing: .8px; text-transform: uppercase;
+      margin-bottom: 36px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-badge::before {
+      content: "";
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .3; transform: scale(.6); }
+    }
+
+    .hero-headline {
+      font-size: clamp(32px, 6vw, 68px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      max-width: 840px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      background: linear-gradient(90deg,
+        var(--gold) 0%, #fff0bb 35%, #ffe480 50%, #fff0bb 65%, var(--gold) 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer-improviso 4s ease-in-out infinite;
+    }
+    @keyframes shimmer-improviso {
+      0%   { background-position: 200% 0; }
+      45%  { background-position: 0%   0; }
+      55%  { background-position: 0%   0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: clamp(15px, 2vw, 19px);
+      font-weight: 300; line-height: 1.65;
+      color: #aaa; max-width: 660px;
+    }
+
+    .hero-actions {
+      margin-top: 48px;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: center;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #000;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px; font-weight: 700;
+      padding: 16px 32px; border-radius: 10px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 0 40px rgba(245,166,35,.3);
+      transition: background .2s, box-shadow .2s, color .2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
+      transform: translateX(-100%);
+      transition: transform .5s;
+    }
+    .btn-primary:hover::after { transform: translateX(100%); }
+    .btn-primary:hover { background: var(--gold-dim); color: #fff; box-shadow: 0 0 64px rgba(245,166,35,.55); }
+
+    .btn-ghost {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px; font-weight: 500; color: var(--muted);
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      padding: 15px 28px; border-radius: 10px;
+      text-decoration: none; cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: color .2s, border-color .2s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: #444; }
+
+    /* ── STRIP ─────────────────────────────────────────────────────────── */
+    .strip {
+      border-top: 1px solid rgba(245,166,35,.08);
+      border-bottom: 1px solid rgba(245,166,35,.08);
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 56px; flex-wrap: wrap;
+      background: rgba(245,166,35,.025);
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--muted); font-weight: 500;
+    }
+    .strip-num {
+      font-size: 22px; font-weight: 800; color: var(--text);
+      min-width: 3ch; display: inline-block;
+    }
+
+    /* ── SECTIONS ───────────────────────────────────────────────────────── */
+    .section {
+      max-width: 1120px; margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      color: var(--gold); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 800; letter-spacing: -1px;
+      line-height: 1.15; max-width: 580px;
+    }
+    .section-sub {
+      margin-top: 14px;
+      font-size: 16px; color: var(--muted);
+      max-width: 500px; line-height: 1.6;
+    }
+
+    /* ── PILARES (glassmorphism) ────────────────────────────────────────── */
+    /* Subtle tech grid behind cards section */
+    .pilares-bg {
+      position: relative;
+      background: var(--bg);
+    }
+    .pilares-bg::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(245,166,35,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,166,35,.04) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+
+    /* Glassmorphism card */
+    .pilar-card {
+      background: rgba(20,18,12,.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(245,166,35,.13);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      position: relative; overflow: hidden;
+      transition: border-color .35s, transform .35s, box-shadow .35s;
+      cursor: default;
+    }
+    /* Inner top shimmer line */
+    .pilar-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,166,35,.35), transparent);
+      opacity: 0; transition: opacity .4s;
+    }
+    /* Ambient glow on hover */
+    .pilar-card::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(245,166,35,.07) 0%, transparent 60%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .pilar-card:hover {
+      border-color: rgba(245,166,35,.55);
+      transform: translateY(-6px);
+      box-shadow:
+        0 24px 60px rgba(0,0,0,.55),
+        0 0 40px rgba(245,166,35,.18),
+        0 0 80px rgba(245,166,35,.07),
+        inset 0 0 24px rgba(245,166,35,.04);
+    }
+    .pilar-card:hover::before, .pilar-card:hover::after { opacity: 1; }
+
+    .pilar-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+    .pilar-title {
+      font-size: 21px; font-weight: 700;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .pilar-title-tag {
+      font-size: 10px; font-weight: 600; color: var(--gold);
+      background: rgba(245,166,35,.1);
+      border: 1px solid rgba(245,166,35,.2);
+      border-radius: 100px; padding: 3px 10px;
+      letter-spacing: .5px; text-transform: uppercase;
+    }
+    .pilar-text { font-size: 15px; color: #8a8a8a; line-height: 1.65; }
+    .pilar-text strong { color: var(--text); font-weight: 600; }
+    .pilar-divider {
+      width: 36px; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-top: 24px;
+    }
+
+    /* ── HOW IT WORKS ───────────────────────────────────────────────────── */
+    .how-section {
+      background: var(--surface);
+      border-top: 1px solid rgba(245,166,35,.07);
+      border-bottom: 1px solid rgba(245,166,35,.07);
+    }
+    .how-section .section { padding-top: 90px; padding-bottom: 90px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px; margin-top: 56px;
+      counter-reset: step;
+    }
+    .step { display: flex; flex-direction: column; gap: 14px; counter-increment: step; }
+    .step-num {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(245,166,35,.08);
+      border: 1px solid rgba(245,166,35,.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--gold);
+      flex-shrink: 0;
+      transition: background .25s, color .25s;
+    }
+    .step-num::before { content: counter(step, decimal-leading-zero); }
+    .step:hover .step-num { background: var(--gold); color: #000; }
+    .step-time { font-size: 12px; color: rgba(245,166,35,.6); margin-top: 6px; }
+    /* Dashed connector behind step numbers */
+    .steps { position: relative; }
+    .steps::before {
+      content: "";
+      position: absolute;
+      top: 21px; left: 21px; right: 21px;
+      height: 2px;
+      border-top: 2px dashed rgba(245,166,35,.25);
+      pointer-events: none;
+    }
+    @media (max-width: 640px) { .steps::before { display: none; } }
+    .step-title { font-size: 17px; font-weight: 700; }
+    .step-text  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA FINAL ──────────────────────────────────────────────────────── */
+    .cta-section {
+      text-align: center; padding: 110px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: "";
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px; height: 640px;
+      background: radial-gradient(circle, rgba(245,166,35,.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800; letter-spacing: -1px;
+      line-height: 1.15; max-width: 640px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .cta-sub {
+      margin: 20px auto 0; font-size: 16px; color: var(--muted);
+      max-width: 480px; line-height: 1.6;
+      position: relative; z-index: 1;
+    }
+    .cta-actions {
+      margin-top: 44px;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: center; gap: 14px;
+      position: relative; z-index: 1;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(245,166,35,.07);
+      padding: 40px 48px 30px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: var(--muted);
+    }
+    footer span { color: var(--gold); }
+
+    /* ── ORBITAL ────────────────────────────────────────────────────────── */
+    .orbital-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      max-width: 1120px; margin: 0 auto;
+      padding: 110px 24px;
+    }
+
+    /* Left — the animation */
+    .orbital-left {
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    /* Wrapper: defines the orbital space */
+    .orbital-wrapper {
+      width: 360px; height: 360px;
+      position: relative; flex-shrink: 0;
+    }
+
+    /* Static decorative rings */
+    .orb-ring-outer {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(245,166,35,.15);
+    }
+    .orb-ring-inner {
+      position: absolute; inset: 30px;
+      border-radius: 50%;
+      border: 1px dashed rgba(245,166,35,.08);
+    }
+
+    /* The spinning layer — contains spokes + items */
+    .orb-spinner {
+      position: absolute; inset: 0;
+      /* rotation driven by GSAP — no CSS animation here */
+    }
+
+    /* Each spoke + dot wrapper: fills the spinner, offset by initial angle */
+    .orb-item {
+      position: absolute; inset: 0;
+      transform: rotate(var(--deg));
+    }
+
+    /* Thin spoke from center to dot */
+    .orb-spoke {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 1px;
+      height: 150px;           /* radius */
+      transform-origin: top center;
+      transform: translateX(-50%) rotate(180deg);
+      background: linear-gradient(to bottom, transparent, rgba(245,166,35,.18));
+    }
+
+    /* Dot + label wrapper sits at the top edge of the item (= on the ring) */
+    .orb-pos {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Labels — rotation kept upright by GSAP ticker */
+    .orb-content {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 7px;
+    }
+
+    /* Gold dot */
+    .orb-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(245,166,35,.7), 0 0 20px rgba(245,166,35,.3);
+      flex-shrink: 0;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .orb-content:hover .orb-dot {
+      transform: scale(1.8);
+      box-shadow: 0 0 18px rgba(245,166,35,1), 0 0 36px rgba(245,166,35,.6);
+    }
+
+    /* Pill label */
+    .orb-label {
+      background: rgba(10,8,4,.75);
+      border: 1px solid rgba(245,166,35,.28);
+      border-radius: 100px;
+      padding: 5px 13px;
+      font-size: 11px; font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .5px;
+      white-space: nowrap;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .orb-label:hover {
+      background: rgba(245,166,35,.2);
+      border-color: rgba(245,166,35,.75);
+      box-shadow: 0 0 16px rgba(245,166,35,.45);
+    }
+
+    /* Center badge */
+    .orb-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      pointer-events: none;
+    }
+    .orb-brain-wrap {
+      position: relative; margin-bottom: 10px;
+      width: 62px; height: 62px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .orb-brain-wrap svg { width: 62px; height: 62px; overflow: visible; }
+    /* Glow ring behind brain — pink */
+    .orb-brain-wrap::before {
+      content: "";
+      position: absolute; inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,157,.28) 0%, transparent 70%);
+    }
+    /* Neural pulse dots driven by GSAP */
+    .brain-node { transition: none; }
+    .orb-center-glow {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,157,.09) 0%, transparent 65%);
+      animation: orb-glow 4s ease-in-out infinite;
+    }
+    @keyframes orb-glow {
+      0%, 100% { transform: scale(1);   opacity: 1; }
+      50%       { transform: scale(1.2); opacity: .5; }
+    }
+    .orb-center-name {
+      font-size: 13px; font-weight: 700;
+      line-height: 1.35; color: var(--text);
+      letter-spacing: -.2px;
+    }
+    .orb-center-name em { font-style: normal; color: var(--gold); display: block; font-size: 11px; font-weight: 400; margin-top: 2px; }
+
+    /* Right — text */
+    .orbital-right {}
+    .orbital-right .section-label { margin-bottom: 14px; }
+    .orbital-right .section-title { max-width: 100%; }
+    .orbital-right .section-sub   { max-width: 100%; margin-top: 16px; }
+
+    .orb-features {
+      margin-top: 32px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .orb-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 16px;
+      background: rgba(245,166,35,.04);
+      border: 1px solid rgba(245,166,35,.1);
+      border-radius: 10px;
+      transition: border-color .3s, background .3s;
+    }
+    .orb-feature:hover {
+      background: rgba(245,166,35,.07);
+      border-color: rgba(245,166,35,.22);
+    }
+    .orb-feature-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .orb-feature-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .orb-feature-text  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .orbital-section { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+      .orbital-left { justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .strip { padding: 20px; gap: 28px; }
+      .section { padding: 70px 20px; }
+      footer { padding: 24px 20px; }
+      .cards-grid { gap: 14px; }
+      .pilar-card { padding: 26px 20px; }
+      .orbital-wrapper { width: 280px; height: 280px; }
+      .orb-spoke { height: 115px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">Negócios de <span>Sucesso</span></div>
+    <a class="nav-cta pulse-btn" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20estruturar%20meu%20neg%C3%B3cio%21" target="_blank" rel="noopener">Falar com especialista</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Fallback: particle network (always rendered; hidden behind video when loaded) -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Video background — covers canvas when available -->
+    <video id="hero-video" autoplay muted loop playsinline poster="">
+      <!-- Pixabay free video (embed permitido sem CORS) -->
+      <source src="https://cdn.pixabay.com/video/2020/05/25/40130-424931508_large.mp4" type="video/mp4" />
+      <!-- No <source> support → canvas fallback stays visible -->
+    </video>
+
+    <!-- Dark overlay on top of video for text readability -->
+    <div id="hero-overlay"></div>
+
+    <!-- Atmospheric layers (above overlay) -->
+    <div class="hero-glow"></div>
+    <div class="hero-vignette"></div>
+
+    <!-- Content -->
+    <div id="hero-inner">
+      <div class="hero-badge" id="hero-badge">Estrutura Digital Estratégica</div>
+
+      <h1 class="hero-headline" id="hero-headline">
+        Negócios de Sucesso não se<br />
+        constroem no <em>improviso.</em>
+      </h1>
+
+      <p class="hero-sub" id="hero-sub">
+        Estruturamos sua presença digital para que sua empresa seja
+        encontrada, escolhida e lembrada — todos os dias, por quem
+        realmente tem interesse no que você vende.
+      </p>
+
+      <div class="hero-actions" id="hero-actions">
+        <a class="btn-primary" id="btn-cta-hero"
+           href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20estruturar%20meu%20neg%C3%B3cio%21"
+           target="_blank" rel="noopener">
+          Quero estruturar meu negócio
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn-ghost" href="#pilares">Conhecer os pilares ↓</a>
+      </div>
+      <p style="margin-top:16px; font-size:12px; color:rgba(255,255,255,.45); text-align:center;">Sem compromisso. Resposta em até 24h.</p>
+    </div>
+  </section>
+
+  <!-- TOOLS TICKER -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+
+      <!-- SET 1 -->
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span>Google</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><defs><radialGradient id="ig-a" cx="30%" cy="110%" r="140%"><stop offset="0%" stop-color="#fdf497"/><stop offset="40%" stop-color="#fd5949"/><stop offset="65%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-a)"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.2" fill="white"/></svg>
+        <span>Instagram</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#25D366"/><path fill="white" d="M17.2 14.5c-.28-.14-1.65-.82-1.9-.91-.26-.09-.45-.14-.64.14-.19.28-.73.91-.9 1.1-.16.18-.33.2-.6.07-1.65-.83-2.73-1.47-3.82-3.34-.29-.5.29-.47.83-1.57.09-.19.04-.35-.02-.49-.07-.14-.64-1.54-.87-2.1-.23-.56-.47-.48-.64-.49-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.77.36-.26.28-1 .98-1 2.4s1.02 2.78 1.16 2.97c.14.2 2.01 3.07 4.87 4.31 1.82.78 2.52.85 3.43.72.55-.09 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33z"/></svg>
+        <span>WhatsApp</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#CC7722"/><path d="M12 5.5L7.5 18h2.8l.9-2.6h1.6l.9 2.6h2.8L12 5.5zm0 4.2l.9 3.2h-1.8l.9-3.2z" fill="white"/></svg>
+        <span>Claude</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M14 8.5h-1.5C12 8.5 11.8 8.8 11.8 9.3V10.5h2.2l-.3 2.2h-1.9V18h-2.3v-5.3H8V10.5h1.5V9.1C9.5 7.4 10.6 6.5 12.1 6.5c.7 0 1.4.05 1.9.1V8.5z" fill="white"/></svg>
+        <span>Meta Ads</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#E37400"/><rect x="5" y="14" width="3" height="5" rx="1" fill="white" opacity=".7"/><rect x="10.5" y="10" width="3" height="9" rx="1" fill="white" opacity=".85"/><rect x="16" y="6" width="3" height="13" rx="1" fill="white"/></svg>
+        <span>Google Analytics</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M8 12a4 4 0 1 1 8 0v1H8v-1zm0 2h8l1 4H7l1-4z" fill="white"/><circle cx="12" cy="8" r="2.5" fill="white"/></svg>
+        <span>Google Ads</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#34A853"/><path d="M12 6l-5 5 1.4 1.4L11 9.8V17h2V9.8l2.6 2.6L17 11l-5-5z" fill="white"/></svg>
+        <span>Search Console</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#4285F4"/><path d="M7 8h10v2H7V8zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" fill="white"/></svg>
+        <span>Tag Manager</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="white"/><circle cx="12" cy="12" r="1.5" fill="white"/></svg>
+        <span>Google Meu Negócio</span>
+      </div>
+
+      <!-- SET 2 (duplicate for seamless loop) -->
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span>Google</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><defs><radialGradient id="ig-b" cx="30%" cy="110%" r="140%"><stop offset="0%" stop-color="#fdf497"/><stop offset="40%" stop-color="#fd5949"/><stop offset="65%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-b)"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.2" fill="white"/></svg>
+        <span>Instagram</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#25D366"/><path fill="white" d="M17.2 14.5c-.28-.14-1.65-.82-1.9-.91-.26-.09-.45-.14-.64.14-.19.28-.73.91-.9 1.1-.16.18-.33.2-.6.07-1.65-.83-2.73-1.47-3.82-3.34-.29-.5.29-.47.83-1.57.09-.19.04-.35-.02-.49-.07-.14-.64-1.54-.87-2.1-.23-.56-.47-.48-.64-.49-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.77.36-.26.28-1 .98-1 2.4s1.02 2.78 1.16 2.97c.14.2 2.01 3.07 4.87 4.31 1.82.78 2.52.85 3.43.72.55-.09 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33z"/></svg>
+        <span>WhatsApp</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#CC7722"/><path d="M12 5.5L7.5 18h2.8l.9-2.6h1.6l.9 2.6h2.8L12 5.5zm0 4.2l.9 3.2h-1.8l.9-3.2z" fill="white"/></svg>
+        <span>Claude</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M14 8.5h-1.5C12 8.5 11.8 8.8 11.8 9.3V10.5h2.2l-.3 2.2h-1.9V18h-2.3v-5.3H8V10.5h1.5V9.1C9.5 7.4 10.6 6.5 12.1 6.5c.7 0 1.4.05 1.9.1V8.5z" fill="white"/></svg>
+        <span>Meta Ads</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#E37400"/><rect x="5" y="14" width="3" height="5" rx="1" fill="white" opacity=".7"/><rect x="10.5" y="10" width="3" height="9" rx="1" fill="white" opacity=".85"/><rect x="16" y="6" width="3" height="13" rx="1" fill="white"/></svg>
+        <span>Google Analytics</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M8 12a4 4 0 1 1 8 0v1H8v-1zm0 2h8l1 4H7l1-4z" fill="white"/><circle cx="12" cy="8" r="2.5" fill="white"/></svg>
+        <span>Google Ads</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#34A853"/><path d="M12 6l-5 5 1.4 1.4L11 9.8V17h2V9.8l2.6 2.6L17 11l-5-5z" fill="white"/></svg>
+        <span>Search Console</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#4285F4"/><path d="M7 8h10v2H7V8zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" fill="white"/></svg>
+        <span>Tag Manager</span>
+      </div>
+
+      <div class="ticker-sep">·</div>
+
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="white"/><circle cx="12" cy="12" r="1.5" fill="white"/></svg>
+        <span>Google Meu Negócio</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PILARES -->
+  <div class="pilares-bg reveal">
+    <section class="section" id="pilares">
+      <span class="section-label">Os 3 pilares</span>
+      <h2 class="section-title" id="pilares-title">
+        Tudo que seu negócio precisa para crescer online.
+      </h2>
+      <p class="section-sub" id="pilares-sub">
+        Não vendemos serviços avulsos. Entregamos um sistema completo
+        que atrai, converte e escala.
+      </p>
+
+      <div class="cards-grid">
+
+        <div class="pilar-card" id="card-1">
+          <span class="pilar-icon">
+            <!-- Location pin -->
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21C12 21 4 14 4 9a8 8 0 1 1 16 0c0 5-8 12-8 12z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </span>
+          <div class="pilar-title">
+            Presença
+            <span class="pilar-title-tag">Pilar 01</span>
+          </div>
+          <p class="pilar-text">
+            <strong>Site profissional e Google otimizado.</strong> Sua empresa aparece
+            no momento certo, para o cliente certo — quando ele está ativamente
+            procurando pelo que você oferece.
+          </p>
+          <div class="pilar-divider"></div>
+          <div style="position:absolute;bottom:-10px;right:16px;font-size:120px;font-weight:900;color:rgba(245,166,35,.04);line-height:1;pointer-events:none;user-select:none;">01</div>
+        </div>
+
+        <div class="pilar-card" id="card-2" style="border-color:rgba(245,166,35,.5);background:linear-gradient(180deg,rgba(245,166,35,.07) 0%,rgba(20,18,12,.55) 60%);">
+          <span class="pilar-icon">
+            <!-- Target / bullseye -->
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="12" cy="12" r="1.5" fill="#F5A623"/>
+            </svg>
+          </span>
+          <div class="pilar-title">
+            Conversão
+            <span class="pilar-title-tag">Pilar 02</span>
+          </div>
+          <p class="pilar-text">
+            <strong>Estrutura tagueada que transforma visitante em contato</strong>
+            — e contato em venda. Cada clique rastreado, cada oportunidade aproveitada.
+          </p>
+          <div class="pilar-divider"></div>
+          <div style="position:absolute;bottom:-10px;right:16px;font-size:120px;font-weight:900;color:rgba(245,166,35,.04);line-height:1;pointer-events:none;user-select:none;">02</div>
+        </div>
+
+        <div class="pilar-card" id="card-3">
+          <span class="pilar-icon">
+            <!-- Rising chart -->
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 17 9 11 13 15 21 7"/>
+              <polyline points="17 7 21 7 21 11"/>
+            </svg>
+          </span>
+          <div class="pilar-title">
+            Escala
+            <span class="pilar-title-tag">Pilar 03</span>
+          </div>
+          <p class="pilar-text">
+            <strong>Automações que trabalham por você</strong> enquanto você foca
+            no que importa: crescer. Processos inteligentes que multiplicam
+            resultados sem multiplicar esforço.
+          </p>
+          <div class="pilar-divider"></div>
+          <div style="position:absolute;bottom:-10px;right:16px;font-size:120px;font-weight:900;color:rgba(245,166,35,.04);line-height:1;pointer-events:none;user-select:none;">03</div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ORBITAL SECTION -->
+  <div style="background:var(--surface); border-top:1px solid rgba(245,166,35,.07); border-bottom:1px solid rgba(245,166,35,.07);">
+    <div class="orbital-section" id="orbital-section">
+
+      <!-- Left: orbital animation -->
+      <div class="orbital-left" id="orbital-left">
+        <div class="orbital-wrapper">
+
+          <!-- Static decorative rings -->
+          <div class="orb-ring-outer"></div>
+          <div class="orb-ring-inner"></div>
+
+          <!-- Ambient center glow -->
+          <div class="orb-center-glow"></div>
+
+          <!-- Spinning layer (ring + spokes + labels) -->
+          <div class="orb-spinner">
+
+            <!-- 5 items: Presença (top) → clockwise -->
+            <div class="orb-item" style="--deg:-90deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Presença</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:-18deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Conversão</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:54deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Tagueamento</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:126deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Automação</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:198deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Escala</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /orb-spinner -->
+
+          <!-- Center (non-rotating) -->
+          <div class="orb-center">
+            <div class="orb-brain-wrap">
+              <!-- Stylised neural-brain SVG -->
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left hemisphere outline -->
+                <path d="M32 12 C20 12 12 20 12 30 C12 40 18 48 28 51 C29 54 30 56 32 57"
+                      stroke="#FF6B9D" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+                <!-- Right hemisphere outline -->
+                <path d="M32 12 C44 12 52 20 52 30 C52 40 46 48 36 51 C35 54 34 56 32 57"
+                      stroke="#FF6B9D" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+                <!-- Corpus callosum (center divider) -->
+                <line x1="32" y1="14" x2="32" y2="56" stroke="#FF6B9D" stroke-width=".8" opacity=".3" stroke-dasharray="3 4"/>
+                <!-- Gyri / fold lines left -->
+                <path d="M20 26 Q24 22 28 26" stroke="#FF6B9D" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+                <path d="M16 36 Q20 32 24 36" stroke="#FF6B9D" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+                <path d="M22 45 Q26 42 30 44" stroke="#FF6B9D" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+                <!-- Gyri / fold lines right -->
+                <path d="M44 26 Q40 22 36 26" stroke="#FF6B9D" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+                <path d="M48 36 Q44 32 40 36" stroke="#FF6B9D" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+                <path d="M42 45 Q38 42 34 44" stroke="#FF6B9D" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+                <!-- Neural connection lines -->
+                <line x1="22" y1="26" x2="32" y2="22" stroke="#FF6B9D" stroke-width=".7" opacity=".4"/>
+                <line x1="42" y1="26" x2="32" y2="22" stroke="#FF6B9D" stroke-width=".7" opacity=".4"/>
+                <line x1="19" y1="36" x2="32" y2="32" stroke="#FF6B9D" stroke-width=".7" opacity=".35"/>
+                <line x1="45" y1="36" x2="32" y2="32" stroke="#FF6B9D" stroke-width=".7" opacity=".35"/>
+                <line x1="25" y1="45" x2="32" y2="42" stroke="#FF6B9D" stroke-width=".7" opacity=".35"/>
+                <line x1="39" y1="45" x2="32" y2="42" stroke="#FF6B9D" stroke-width=".7" opacity=".35"/>
+                <!-- Neural nodes (pulsed by GSAP) -->
+                <circle class="brain-node" id="bn0" cx="32" cy="22" r="2.5" fill="#FF6B9D"/>
+                <circle class="brain-node" id="bn1" cx="22" cy="26" r="1.8" fill="#FF6B9D" opacity=".8"/>
+                <circle class="brain-node" id="bn2" cx="42" cy="26" r="1.8" fill="#FF6B9D" opacity=".8"/>
+                <circle class="brain-node" id="bn3" cx="32" cy="32" r="2"   fill="#FF6B9D"/>
+                <circle class="brain-node" id="bn4" cx="19" cy="36" r="1.6" fill="#FF6B9D" opacity=".7"/>
+                <circle class="brain-node" id="bn5" cx="45" cy="36" r="1.6" fill="#FF6B9D" opacity=".7"/>
+                <circle class="brain-node" id="bn6" cx="25" cy="45" r="1.5" fill="#FF6B9D" opacity=".6"/>
+                <circle class="brain-node" id="bn7" cx="39" cy="45" r="1.5" fill="#FF6B9D" opacity=".6"/>
+              </svg>
+            </div>
+            <div class="orb-center-name">
+              Negócios de Sucesso
+              <em>ecossistema completo</em>
+            </div>
+          </div>
+
+        </div><!-- /orbital-wrapper -->
+      </div><!-- /orbital-left -->
+
+      <!-- Right: headline + feature list -->
+      <div class="orbital-right" id="orbital-right">
+        <span class="section-label">Ecossistema integrado</span>
+        <h2 class="section-title">
+          Cinco forças trabalhando juntas, por você.
+        </h2>
+        <p class="section-sub">
+          Não basta ter um site bonito ou rodar um anúncio isolado.
+          O resultado real vem quando todos os pontos se conectam —
+          como nós de uma rede que se reforça continuamente.
+        </p>
+
+        <div class="orb-features" id="orb-features">
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">Presença digital real</div>
+              <div class="orb-feature-text">Site otimizado + Google Meu Negócio para ser encontrado na hora certa.</div>
+            </div>
+          </div>
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">Estrutura de conversão</div>
+              <div class="orb-feature-text">Páginas e fluxos desenhados para transformar visita em lead qualificado.</div>
+            </div>
+          </div>
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">Tagueamento e dados</div>
+              <div class="orb-feature-text">Rastreamento preciso de cada clique — decisões baseadas em números, não em achismos.</div>
+            </div>
+          </div>
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">Automações inteligentes</div>
+              <div class="orb-feature-text">Follow-up automático, CRM e fluxos que trabalham 24h enquanto você foca no negócio.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /orbital-section -->
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section" id="como-funciona">
+    <div class="section">
+      <span class="section-label">Como funciona</span>
+      <h2 class="section-title" id="how-title">
+        Da primeira conversa ao resultado em 4 etapas.
+      </h2>
+      <div class="steps" id="steps-grid">
+        <div class="step reveal">
+          <div class="step-num"></div>
+          <div class="step-title">Diagnóstico</div>
+          <div class="step-text">Entendemos o seu negócio, público-alvo e onde estão as maiores oportunidades de crescimento.</div>
+          <div class="step-time">Dia 1</div>
+        </div>
+        <div class="step reveal" style="transition-delay:.15s">
+          <div class="step-num"></div>
+          <div class="step-title">Estratégia</div>
+          <div class="step-text">Montamos um plano personalizado com presença, conversão e escala alinhados aos seus objetivos.</div>
+          <div class="step-time">Dias 2–3</div>
+        </div>
+        <div class="step reveal" style="transition-delay:.3s">
+          <div class="step-num"></div>
+          <div class="step-title">Execução</div>
+          <div class="step-text">Nossa equipe coloca tudo no ar — site, tráfego, automações — com agilidade e precisão.</div>
+          <div class="step-time">Dias 4–7</div>
+        </div>
+        <div class="step reveal" style="transition-delay:.45s">
+          <div class="step-num"></div>
+          <div class="step-title">Crescimento</div>
+          <div class="step-text">Monitoramos, otimizamos e escalonamos continuamente para que seus resultados só melhorem.</div>
+          <div class="step-time">Contínuo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REALIDADE DO MERCADO -->
+  <section class="reveal" style="padding:80px 0; background:rgba(245,166,35,.03); border-top:1px solid rgba(245,166,35,.1); border-bottom:1px solid rgba(245,166,35,.1);">
+    <div style="max-width:1100px; margin:0 auto; padding:0 24px; text-align:center;">
+      <span style="color:#F5A623; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;">A REALIDADE DO MERCADO</span>
+      <h2 style="font-size:clamp(28px,4vw,42px); font-weight:800; margin:16px 0 48px; color:#fff;">
+        Cada dia sem estrutura é um cliente<br>que foi para o concorrente.
+      </h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:32px; text-align:left;">
+          <div style="font-size:36px; font-weight:900; color:#F5A623; margin-bottom:12px;">75%</div>
+          <p style="color:rgba(255,255,255,.7); line-height:1.6;">dos usuários nunca passam da primeira página do Google. Se você não aparece, não existe.</p>
+          <span style="font-size:11px; color:rgba(255,255,255,.3);">Fonte: Think with Google</span>
+        </div>
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:32px; text-align:left;">
+          <div style="font-size:36px; font-weight:900; color:#F5A623; margin-bottom:12px;">3x</div>
+          <p style="color:rgba(255,255,255,.7); line-height:1.6;">mais faturamento para empresas com presença digital estruturada em relação às que não investem.</p>
+          <span style="font-size:11px; color:rgba(255,255,255,.3);">Fonte: McKinsey Digital</span>
+        </div>
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:32px; text-align:left;">
+          <div style="font-size:36px; font-weight:900; color:#F5A623; margin-bottom:12px;">8/10</div>
+          <p style="color:rgba(255,255,255,.7); line-height:1.6;">consumidores pesquisam online antes de comprar. Seu cliente já está te procurando — você está lá?</p>
+          <span style="font-size:11px; color:rgba(255,255,255,.3);">Fonte: GE Capital</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section reveal" id="cta-final">
+    <div style="position:relative; z-index:1; margin-bottom:0;">
+      <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(245,166,35,.1); border:1px solid rgba(245,166,35,.3); border-radius:999px; padding:6px 16px; margin-bottom:24px;">
+        <span style="width:8px; height:8px; background:#F5A623; border-radius:50%; animation:pulse-glow 1.5s infinite; display:inline-block;"></span>
+        <span style="color:#F5A623; font-size:12px; font-weight:700; letter-spacing:1px;">VAGAS ABERTAS PARA ESTE MÊS</span>
+      </div>
+    </div>
+    <h2 class="cta-title">
+      Pronto para parar de improvisar e começar a crescer?
+    </h2>
+    <p class="cta-sub">
+      Fale com um especialista agora. Sem enrolação,
+      sem compromisso — só clareza sobre o próximo passo.
+    </p>
+    <div class="cta-actions">
+      <a class="btn-primary pulse-btn" id="btn-cta-final"
+         href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20estruturar%20meu%20neg%C3%B3cio%21"
+         target="_blank" rel="noopener">
+        Quero estruturar meu negócio →
+      </a>
+    </div>
+    <p style="margin-top:20px; font-size:13px; color:rgba(255,255,255,.5); position:relative; z-index:1;">
+      ✓ +200 empresas atendidas &nbsp;|&nbsp; ✓ Resultado em 48h &nbsp;|&nbsp; ✓ Sem fidelidade
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:32px; margin-bottom:32px; border-bottom:1px solid rgba(245,166,35,.15); flex-wrap:wrap; gap:24px; width:100%;">
+      <span style="font-weight:700; font-size:18px; color:var(--text);">Negócios de <span style="color:#F5A623;">Sucesso</span></span>
+      <nav style="display:flex; gap:32px;">
+        <a href="#pilares" style="color:rgba(255,255,255,.5); text-decoration:none; font-size:14px; transition:color .2s;" onmouseover="this.style.color='#F5A623'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Protocolo</a>
+        <a href="#como-funciona" style="color:rgba(255,255,255,.5); text-decoration:none; font-size:14px; transition:color .2s;" onmouseover="this.style.color='#F5A623'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Como Funciona</a>
+        <a href="#" style="color:rgba(255,255,255,.5); text-decoration:none; font-size:14px; transition:color .2s;" onmouseover="this.style.color='#F5A623'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Privacidade</a>
+      </nav>
+    </div>
+    <div>© 2025 <span>Negócios de Sucesso</span>. Todos os direitos reservados.</div>
+    <div>Feito para quem leva o negócio a sério.</div>
+  </footer>
+
+  <script>
+  // ── NEURAL NETWORK CANVAS ─────────────────────────────────────────────────
+  (function () {
+    const canvas = document.getElementById("hero-canvas");
+    const ctx    = canvas.getContext("2d");
+    const GOLD   = "245,166,35";
+    const DIST   = 150;   // max connection distance px
+    const SPEED  = 0.38;  // max velocity per axis
+    const GRID   = 54;    // circuit grid spacing
+    let W, H, nodes = [], pulses = [], raf, tick = 0;
+
+    function rand(a, b) { return Math.random() * (b - a) + a; }
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function initNodes() {
+      const count = Math.min(85, Math.max(45, Math.floor(W * H / 10000)));
+      nodes = Array.from({ length: count }, () => ({
+        x:     rand(0, W),
+        y:     rand(0, H),
+        vx:    rand(-SPEED, SPEED) || SPEED * .3,
+        vy:    rand(-SPEED, SPEED) || SPEED * .3,
+        r:     rand(1.2, 2.4),
+        alpha: rand(0.5, 0.9),
+        hub:   Math.random() < 0.18,  // hub nodes are bigger/brighter
+      }));
+      pulses = [];
+    }
+
+    function spawnPulse(a, b) {
+      pulses.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, t: 0, speed: rand(.008, .018) });
+    }
+
+    // Brighter near canvas centre
+    function centreW(cx, cy) {
+      const dx = cx / W - .5, dy = cy / H - .5;
+      return 1 - Math.sqrt(dx * dx + dy * dy) * .75;
+    }
+
+    function drawFrame() {
+      ctx.clearRect(0, 0, W, H);
+      tick++;
+
+      // 1 ── Circuit grid (very faint)
+      ctx.save();
+      ctx.strokeStyle = `rgba(${GOLD},.025)`;
+      ctx.lineWidth   = .5;
+      for (let x = 0; x < W; x += GRID) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+      }
+      for (let y = 0; y < H; y += GRID) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      }
+      ctx.restore();
+
+      // 2 ── Move nodes (soft bounce)
+      nodes.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0)  { p.x = 0;  p.vx =  Math.abs(p.vx); }
+        if (p.x > W)  { p.x = W;  p.vx = -Math.abs(p.vx); }
+        if (p.y < 0)  { p.y = 0;  p.vy =  Math.abs(p.vy); }
+        if (p.y > H)  { p.y = H;  p.vy = -Math.abs(p.vy); }
+      });
+
+      // 3 ── Draw edges + spawn occasional pulses
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist >= DIST) continue;
+
+          const prox  = 1 - dist / DIST;
+          const alpha = prox * prox * centreW((a.x+b.x)/2, (a.y+b.y)/2) * 0.28;
+
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${GOLD},${alpha.toFixed(3)})`;
+          ctx.lineWidth   = prox * 1.2;
+          ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+
+          if (tick % 3 === 0 && Math.random() < 0.0018) spawnPulse(a, b);
+        }
+      }
+
+      // 4 ── Animate travelling pulses along edges
+      pulses = pulses.filter(p => p.t <= 1);
+      pulses.forEach(p => {
+        p.t += p.speed;
+        const px   = p.ax + (p.bx - p.ax) * p.t;
+        const py   = p.ay + (p.by - p.ay) * p.t;
+        const fade = Math.sin(p.t * Math.PI); // bell-curve fade in/out
+
+        const g = ctx.createRadialGradient(px, py, 0, px, py, 8);
+        g.addColorStop(0, `rgba(${GOLD},${(fade * .55).toFixed(2)})`);
+        g.addColorStop(1, `rgba(${GOLD},0)`);
+        ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI*2);
+        ctx.fillStyle = g; ctx.fill();
+
+        ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255,210,100,${(fade * .9).toFixed(2)})`; ctx.fill();
+      });
+
+      // 5 ── Draw nodes on top
+      nodes.forEach(p => {
+        const r = p.hub ? p.r * 1.7 : p.r;
+
+        const haloR = r * (p.hub ? 5 : 4);
+        const grd   = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
+        grd.addColorStop(0, `rgba(${GOLD},${(p.alpha * .4).toFixed(2)})`);
+        grd.addColorStop(1, `rgba(${GOLD},0)`);
+        ctx.beginPath(); ctx.arc(p.x, p.y, haloR, 0, Math.PI*2);
+        ctx.fillStyle = grd; ctx.fill();
+
+        ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+        ctx.fillStyle = p.hub
+          ? `rgba(255,210,100,${p.alpha.toFixed(2)})`
+          : `rgba(${GOLD},${p.alpha.toFixed(2)})`;
+        ctx.fill();
+      });
+
+      raf = requestAnimationFrame(drawFrame);
+    }
+
+    // Pause when hero scrolls out of view
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { if (!raf) drawFrame(); }
+      else { cancelAnimationFrame(raf); raf = null; }
+    }, { threshold: 0 });
+    obs.observe(canvas);
+
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(raf); raf = null;
+      resize(); initNodes(); drawFrame();
+    });
+
+    // ── Video / fallback logic ─────────────────────────────────────────────
+    const vid = document.getElementById("hero-video");
+    if (vid) {
+      // Video plays → fade canvas out (GPU saving, it's covered anyway)
+      vid.addEventListener("playing", () => {
+        canvas.style.transition = "opacity 1.2s";
+        canvas.style.opacity    = "0";
+        setTimeout(() => { cancelAnimationFrame(raf); raf = null; }, 1300);
+      }, { once: true });
+
+      // Video errors → remove it, canvas stays as primary background
+      const onFail = () => {
+        vid.style.display = "none";
+        document.getElementById("hero-overlay").style.background = "rgba(0,0,0,0.42)";
+      };
+      vid.addEventListener("error", onFail);
+      // Stall guard: if no "playing" within 4 s, treat as failed
+      setTimeout(() => { if (vid.paused || vid.readyState < 2) onFail(); }, 4000);
+    }
+
+    // Start canvas immediately (visible while video buffers, or as sole background)
+    resize(); initNodes(); drawFrame();
+  })();
+
+  // ── GSAP ANIMATIONS ───────────────────────────────────────────────────────
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // HERO ENTRANCE
+    gsap.set("#navbar", { opacity: 0, y: -12 });
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.to("#navbar",        { opacity: 1, y: 0,   duration: .5 })
+      .from("#hero-badge",  { opacity: 0, y: -24,  duration: .65 }, "-=.2")
+      .from("#hero-headline",{ opacity: 0, y: 50,  duration: .9 }, "-=.35")
+      .from("#hero-sub",    { opacity: 0, y: 28,   duration: .75 }, "-=.5")
+      .from("#hero-actions",{ opacity: 0, y: 20,   duration: .65 }, "-=.4");
+
+    // HERO PARALLAX — content drifts up as user scrolls
+    gsap.to("#hero-inner", {
+      y: -90, ease: "none",
+      scrollTrigger: {
+        trigger: "#hero", start: "top top", end: "bottom top", scrub: 1.6,
+      },
+    });
+
+    // Glow dims as hero exits viewport
+    gsap.to(".hero-glow", {
+      opacity: 0, scale: 1.25, ease: "none",
+      scrollTrigger: {
+        trigger: "#hero", start: "30% top", end: "bottom top", scrub: true,
+      },
+    });
+
+    // STRIP COUNTERS
+    document.querySelectorAll(".strip-num").forEach(el => {
+      const target = parseInt(el.dataset.target, 10);
+      const prefix = el.dataset.prefix || "";
+      const suffix = el.dataset.suffix || "";
+      const obj    = { val: 0 };
+      ScrollTrigger.create({
+        trigger: "#numeros", start: "top 90%", once: true,
+        onEnter: () => {
+          gsap.to(obj, {
+            val: target, duration: 1.8, ease: "power2.out",
+            onUpdate:  () => { el.textContent = prefix + Math.round(obj.val) + suffix; },
+            onComplete:() => { el.textContent = prefix + target + suffix; },
+          });
+        },
+      });
+    });
+    gsap.from(".strip-item", {
+      scrollTrigger: { trigger: "#numeros", start: "top 88%" },
+      opacity: 0, y: 16, stagger: .1, duration: .6, ease: "power2.out",
+    });
+
+    // PILARES
+    gsap.from(["#pilares .section-label", "#pilares-title", "#pilares-sub"], {
+      scrollTrigger: { trigger: "#pilares-title", start: "top 88%" },
+      opacity: 0, y: 28, stagger: .12, duration: .7, ease: "power2.out",
+    });
+    gsap.from(["#card-1","#card-2","#card-3"], {
+      scrollTrigger: { trigger: "#card-1", start: "top 86%" },
+      opacity: 0, y: 60, stagger: .15, duration: .85, ease: "power2.out",
+    });
+
+    // ORBITAL SECTION — entrance
+    gsap.from("#orbital-left", {
+      scrollTrigger: { trigger: "#orbital-section", start: "top 80%" },
+      opacity: 0, x: -50, duration: .9, ease: "power2.out",
+    });
+    gsap.from(["#orbital-right .section-label", "#orbital-right .section-title",
+               "#orbital-right .section-sub"], {
+      scrollTrigger: { trigger: "#orbital-section", start: "top 80%" },
+      opacity: 0, x: 40, stagger: .12, duration: .85, ease: "power2.out",
+    });
+    gsap.from("#orb-features .orb-feature", {
+      scrollTrigger: { trigger: "#orb-features", start: "top 85%" },
+      opacity: 0, y: 20, stagger: .1, duration: .6, ease: "power2.out",
+    });
+
+    // ORBITAL SPIN — GSAP drives rotation so ticker can read exact angle
+    const orbSpinner = document.querySelector(".orb-spinner");
+    if (orbSpinner) {
+      gsap.to(orbSpinner, {
+        rotation: 360,
+        duration: 38,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+
+      // LABELS ALWAYS HORIZONTAL
+      // Each item has an initial offset (--deg). Net world rotation of label =
+      //   spinnerAngle + itemOffset. Counter-rotate by that exact amount every frame.
+      const ITEM_OFFSETS = [-90, -18, 54, 126, 198]; // matches --deg values in HTML
+      const orbContents  = document.querySelectorAll(".orb-content");
+      gsap.ticker.add(() => {
+        const spinAngle = gsap.getProperty(orbSpinner, "rotation") % 360;
+        orbContents.forEach((el, i) => {
+          gsap.set(el, { rotation: -(spinAngle + ITEM_OFFSETS[i]) });
+        });
+      });
+    }
+
+    // BRAIN NODE PULSES — staggered glow on each neural node
+    const brainNodes = document.querySelectorAll(".brain-node");
+    brainNodes.forEach((node, i) => {
+      gsap.to(node, {
+        opacity:    0.15,
+        scale:      0.5,
+        duration:   0.7 + i * 0.12,
+        repeat:    -1,
+        yoyo:       true,
+        ease:       "sine.inOut",
+        delay:      i * 0.18,
+        transformOrigin: "center center",
+      });
+    });
+    // Central node (bn0, bn3) also gets a faint filter glow via box-shadow proxy
+    gsap.to(["#bn0", "#bn3"], {
+      attr: { r: 3.5 },
+      duration: 1.2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      stagger: .6,
+    });
+
+    // HOW IT WORKS
+    gsap.from(["#how-title", ".how-section .section-label"], {
+      scrollTrigger: { trigger: "#how-title", start: "top 88%" },
+      opacity: 0, y: 24, stagger: .1, duration: .7, ease: "power2.out",
+    });
+    // Steps use CSS reveal class — no GSAP animation needed for them
+
+    // CTA FINAL (internal elements only — section itself uses reveal class)
+    gsap.from(["#cta-final .cta-title","#cta-final .cta-sub","#cta-final .cta-actions"], {
+      scrollTrigger: { trigger: "#cta-final", start: "top 82%" },
+      opacity: 0, y: 32, stagger: .18, duration: .75, ease: "power2.out",
+    });
+
+    // BRAIN — scale pulse (pink glow breathe)
+    gsap.to(".orb-brain-wrap svg", {
+      scale: 1.1,
+      duration: 1.1,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      transformOrigin: "50% 50%",
+    });
+
+    // CTA BUTTONS — heartbeat (two quick thumps, long pause)
+    function heartbeat(el) {
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.6 });
+      tl.to(el, { boxShadow: "0 0 0 6px rgba(245,166,35,.25), 0 0 55px rgba(245,166,35,.7)", duration: .12, ease: "power2.out" })
+        .to(el, { boxShadow: "0 0 0 0px rgba(245,166,35,0),  0 0 28px rgba(245,166,35,.35)", duration: .28, ease: "power2.in" })
+        .to(el, { boxShadow: "0 0 0 4px rgba(245,166,35,.18), 0 0 40px rgba(245,166,35,.55)", duration: .1,  ease: "power2.out" })
+        .to(el, { boxShadow: "0 0 0 0px rgba(245,166,35,0),  0 0 28px rgba(245,166,35,.3)",  duration: .36, ease: "power2.in" });
+    }
+    heartbeat("#btn-cta-hero");
+    heartbeat("#btn-cta-final");
+  });
+
+  // ── REVEAL IntersectionObserver ──────────────────────────────────────────────
+  (function () {
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+  })();
+  </script>
+</body>
+</html>
