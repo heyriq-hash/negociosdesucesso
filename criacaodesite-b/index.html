@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criação de Site Profissional | Negócios de Sucesso — No ar em 48h</title>
+  <meta name="description" content="Criamos seu site profissional do zero e no ar em 48h, já otimizado para o Google. Design exclusivo, SEO incluído, sem mensalidade obrigatória." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://negociosdesucesso.com.br/criacaodesite-b/" />
+  <meta property="og:title" content="Criação de Site Profissional | Negócios de Sucesso" />
+  <meta property="og:description" content="Seu site no ar em 48h — design exclusivo, otimizado pro Google e pronto para converter visitante em cliente." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#F5F5F0" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Negócios de Sucesso","description":"Criação de sites profissionais para empresas que querem ser encontradas no Google e converter visitantes em clientes.","url":"https://negociosdesucesso.com.br/criacaodesite-b","areaServed":"BR","serviceType":["Criação de Site","Desenvolvimento Web","SEO","Marketing Digital"]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+    ::selection { background: rgba(184,134,11,.2); color: #0A0A0A; }
+
+    /* ── REVEAL ────────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── PULSE-GLOW (gold — used only on CTA final btn) ─────────────────*/
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,11,.45); }
+      50%       { box-shadow: 0 0 0 12px rgba(184,134,11,0); }
+    }
+    .pulse-btn { animation: pulse-glow 2s infinite; }
+
+    :root {
+      --gold:     #B8860B;
+      --gold-dim: #9a6e09;
+      --bg:       #F5F5F0;
+      --surface:  #EDEDE8;
+      --card:     #FFFFFF;
+      --border:   #E0E0DA;
+      --text:     #0A0A0A;
+      --muted:    #444444;
+      --radius:   14px;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid #E0E0DA;
+    }
+    .nav-logo {
+      font-size: 15px; font-weight: 700; letter-spacing: -.2px;
+      color: #0A0A0A;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px; font-weight: 600;
+      background: #0A0A0A; color: #FFFFFF;
+      border: none; border-radius: 8px;
+      padding: 10px 20px; cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .nav-cta:hover { background: #222222; transform: translateY(-1px); }
+
+    /* ── HERO ───────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #F5F5F0 0%, #EEEEE8 100%);
+    }
+
+    /* Subtle noise texture overlay */
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle radial highlight */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(184,134,11,.06) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #hero-inner {
+      display: flex; flex-direction: column;
+      align-items: center;
+      position: relative; z-index: 10;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #0A0A0A;
+      border: 1px solid #0A0A0A;
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 11px; font-weight: 600; color: #FFFFFF;
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    .hero-badge::before {
+      content: "";
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #FFFFFF;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(.6); }
+    }
+
+    .hero-headline {
+      font-size: clamp(30px, 5.5vw, 64px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 860px;
+      color: #0A0A0A;
+    }
+    .hero-headline em {
+      font-style: normal;
+      background: linear-gradient(90deg,
+        #B8860B 0%, #D4A520 30%, #C49610 50%, #D4A520 70%, #B8860B 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer-gold 4s ease-in-out infinite;
+    }
+    @keyframes shimmer-gold {
+      0%   { background-position: 200% 0; }
+      45%  { background-position: 0%   0; }
+      55%  { background-position: 0%   0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: clamp(15px, 2vw, 19px);
+      font-weight: 400; line-height: 1.7;
+      color: #444444; max-width: 620px;
+    }
+
+    .hero-actions {
+      margin-top: 48px;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: center;
+      gap: 16px;
+    }
+
+    /* ── BUTTONS ──────────────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #0A0A0A; color: #FFFFFF;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px; font-weight: 700;
+      padding: 16px 32px; border-radius: 10px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,.18);
+      transition: background .2s, box-shadow .2s, transform .15s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);
+      transform: translateX(-100%);
+      transition: transform .5s;
+    }
+    .btn-primary:hover::after { transform: translateX(100%); }
+    .btn-primary:hover { background: #222222; box-shadow: 0 8px 32px rgba(0,0,0,.28); }
+
+    .btn-ghost {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px; font-weight: 600; color: #0A0A0A;
+      background: transparent; border: 1.5px solid #0A0A0A;
+      padding: 15px 28px; border-radius: 10px;
+      text-decoration: none; cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .btn-ghost:hover { background: rgba(10,10,10,.06); border-color: #444; color: #444; }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #B8860B; color: #0A0A0A;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px; font-weight: 700;
+      padding: 16px 32px; border-radius: 10px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(184,134,11,.4);
+      transition: background .2s, box-shadow .2s, color .2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-gold::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg,transparent 30%,rgba(255,255,255,.2) 50%,transparent 70%);
+      transform: translateX(-100%);
+      transition: transform .5s;
+    }
+    .btn-gold:hover::after { transform: translateX(100%); }
+    .btn-gold:hover { background: #9a6e09; color: #fff; box-shadow: 0 8px 36px rgba(184,134,11,.55); }
+
+    /* ── TICKER ──────────────────────────────────────────────────────────── */
+    .ticker-wrap {
+      overflow: hidden;
+      background: #0A0A0A;
+      border-top: 1px solid rgba(184,134,11,.15);
+      border-bottom: 1px solid rgba(184,134,11,.15);
+      padding: 14px 0;
+    }
+    .ticker-track {
+      display: flex; align-items: center; gap: 28px;
+      width: max-content;
+      animation: ticker-move 38s linear infinite;
+    }
+    @keyframes ticker-move {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.55);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .ticker-sep { color: rgba(184,134,11,.5); font-size: 18px; flex-shrink: 0; }
+
+    /* ── SOCIAL PROOF BAR ────────────────────────────────────────────────── */
+    .proof-bar {
+      background: #0A0A0A;
+      padding: 22px 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 600; color: #FFFFFF;
+    }
+    .proof-item span.proof-icon { font-size: 18px; }
+    .proof-sep { color: rgba(184,134,11,.5); font-size: 20px; }
+    @media (max-width: 640px) { .proof-bar { gap: 20px; padding: 16px 20px; } .proof-sep { display: none; } }
+
+    /* ── PRICE ANCHOR ────────────────────────────────────────────────────── */
+    .price-anchor {
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: .3px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .price-anchor span { opacity: .5; margin: 0 6px; }
+
+    /* ── SECTIONS ────────────────────────────────────────────────────────── */
+    .section {
+      max-width: 1120px; margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      color: var(--gold); letter-spacing: .12em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.15; max-width: 580px;
+      color: #0A0A0A;
+    }
+    .section-sub {
+      margin-top: 14px;
+      font-size: 16px; color: #444444;
+      max-width: 500px; line-height: 1.7;
+    }
+
+    /* ── PILARES ──────────────────────────────────────────────────────────── */
+    .pilares-bg {
+      position: relative;
+      background: var(--bg);
+    }
+    .pilares-bg::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(10,10,10,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10,10,10,.03) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+
+    .pilar-card {
+      background: #FFFFFF;
+      border: 1px solid #E0E0DA;
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      transition: border-color .35s, transform .35s, box-shadow .35s;
+      cursor: default;
+    }
+    .pilar-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(10,10,10,.2), transparent);
+      opacity: 0; transition: opacity .4s;
+    }
+    .pilar-card:hover {
+      border-color: #0A0A0A;
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.12);
+    }
+    .pilar-card:hover::before { opacity: 1; }
+
+    .pilar-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+    .pilar-title {
+      font-size: 21px; font-weight: 700;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+      color: #0A0A0A;
+    }
+    .pilar-title-tag {
+      font-size: 10px; font-weight: 600; color: #FFFFFF;
+      background: #0A0A0A;
+      border: 1px solid #0A0A0A;
+      border-radius: 100px; padding: 3px 10px;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    .pilar-text { font-size: 15px; color: #444444; line-height: 1.7; }
+    .pilar-text strong { color: #0A0A0A; font-weight: 600; }
+    .pilar-divider {
+      width: 36px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-top: 24px;
+    }
+
+    /* ── HOW IT WORKS ───────────────────────────────────────────────────── */
+    .how-section {
+      background: #EDEDE8;
+      border-top: 1px solid #E0E0DA;
+      border-bottom: 1px solid #E0E0DA;
+    }
+    .how-section .section { padding-top: 90px; padding-bottom: 90px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px; margin-top: 56px;
+      counter-reset: step;
+    }
+    .step { display: flex; flex-direction: column; gap: 14px; counter-increment: step; }
+    .step-num {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: #E0E0DA;
+      border: 1px solid #E0E0DA;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: #0A0A0A;
+      flex-shrink: 0;
+      transition: background .25s, color .25s, border-color .25s;
+    }
+    .step-num::before { content: counter(step, decimal-leading-zero); }
+    .step:hover .step-num { background: #0A0A0A; color: #FFFFFF; border-color: #0A0A0A; }
+    .step-time { font-size: 12px; color: var(--gold); font-weight: 600; margin-top: 6px; }
+    .steps { position: relative; }
+    .steps::before {
+      content: "";
+      position: absolute;
+      top: 21px; left: 21px; right: 21px;
+      height: 2px;
+      border-top: 2px dashed #D0D0CA;
+      pointer-events: none;
+    }
+    @media (max-width: 640px) { .steps::before { display: none; } }
+    .step-title { font-size: 17px; font-weight: 700; color: #0A0A0A; }
+    .step-text  { font-size: 14px; color: #444444; line-height: 1.7; }
+
+    /* ── ORBITAL ──────────────────────────────────────────────────────────── */
+    .orbital-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      max-width: 1120px; margin: 0 auto;
+      padding: 110px 24px;
+    }
+    .orbital-left {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .orbital-wrapper {
+      width: 360px; height: 360px;
+      position: relative; flex-shrink: 0;
+    }
+    .orb-ring-outer {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.12);
+    }
+    .orb-ring-inner {
+      position: absolute; inset: 30px;
+      border-radius: 50%;
+      border: 1px dashed rgba(0,0,0,.07);
+    }
+    .orb-spinner { position: absolute; inset: 0; }
+    .orb-item {
+      position: absolute; inset: 0;
+      transform: rotate(var(--deg));
+    }
+    .orb-spoke {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 1px; height: 150px;
+      transform-origin: top center;
+      transform: translateX(-50%) rotate(180deg);
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,.12));
+    }
+    .orb-pos {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .orb-content {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 7px;
+    }
+    .orb-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #0A0A0A;
+      box-shadow: 0 0 8px rgba(0,0,0,.2), 0 0 16px rgba(0,0,0,.08);
+      flex-shrink: 0;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .orb-content:hover .orb-dot {
+      transform: scale(1.8);
+      box-shadow: 0 0 14px rgba(0,0,0,.4), 0 0 28px rgba(0,0,0,.2);
+    }
+    .orb-label {
+      background: #FFFFFF;
+      border: 1px solid #0A0A0A;
+      border-radius: 100px;
+      padding: 5px 13px;
+      font-size: 11px; font-weight: 700;
+      color: #0A0A0A;
+      letter-spacing: .12em;
+      white-space: nowrap;
+      transition: background .25s ease, box-shadow .25s ease;
+    }
+    .orb-label:hover {
+      background: rgba(10,10,10,.06);
+      box-shadow: 0 2px 10px rgba(0,0,0,.12);
+    }
+    .orb-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      pointer-events: none;
+    }
+    .orb-brain-wrap {
+      position: relative; margin-bottom: 10px;
+      width: 62px; height: 62px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .orb-brain-wrap svg { width: 62px; height: 62px; overflow: visible; }
+    .orb-brain-wrap::before {
+      content: "";
+      position: absolute; inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,134,11,.14) 0%, transparent 70%);
+    }
+    .brain-node { transition: none; }
+    .orb-center-glow {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,.04) 0%, transparent 65%);
+      animation: orb-glow 4s ease-in-out infinite;
+    }
+    @keyframes orb-glow {
+      0%, 100% { transform: scale(1);   opacity: 1; }
+      50%       { transform: scale(1.2); opacity: .4; }
+    }
+    .orb-center-name {
+      font-size: 13px; font-weight: 700;
+      line-height: 1.35; color: #0A0A0A;
+      letter-spacing: -.2px;
+    }
+    .orb-center-name em { font-style: normal; color: var(--gold); display: block; font-size: 11px; font-weight: 400; margin-top: 2px; }
+    .orbital-right .section-label { margin-bottom: 14px; }
+    .orbital-right .section-title { max-width: 100%; }
+    .orbital-right .section-sub   { max-width: 100%; margin-top: 16px; }
+    .orb-features {
+      margin-top: 32px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .orb-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 16px;
+      background: rgba(0,0,0,.03);
+      border: 1px solid #E0E0DA;
+      border-radius: 10px;
+      transition: border-color .3s, background .3s;
+    }
+    .orb-feature:hover {
+      background: rgba(0,0,0,.06);
+      border-color: #0A0A0A;
+    }
+    .orb-feature-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .orb-feature-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; color: #0A0A0A; }
+    .orb-feature-text  { font-size: 13px; color: #444444; line-height: 1.6; }
+
+    /* ── MID CTA ──────────────────────────────────────────────────────────── */
+    .mid-cta {
+      text-align: center;
+      padding: 52px 24px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── TESTIMONIALS ────────────────────────────────────────────────────── */
+    .testimonials-section {
+      background: #F5F5F0;
+      border-top: 1px solid #E0E0DA;
+      border-bottom: 1px solid #E0E0DA;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .testimonial-card {
+      background: #FFFFFF;
+      border: 1px solid #E0E0DA;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      transition: border-color .35s, transform .35s, box-shadow .35s;
+    }
+    .testimonial-card::before {
+      content: "\201C";
+      position: absolute;
+      top: 16px; right: 24px;
+      font-size: 72px;
+      font-weight: 900;
+      color: rgba(10,10,10,.06);
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .testimonial-card:hover {
+      border-color: #0A0A0A;
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.1);
+    }
+    .testimonial-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: #0A0A0A;
+      border: 2px solid #0A0A0A;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800;
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }
+    .testimonial-header {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .testimonial-name { font-size: 14px; font-weight: 700; color: #0A0A0A; }
+    .testimonial-company { font-size: 12px; color: #444444; margin-top: 2px; }
+    .testimonial-stars { color: var(--gold); font-size: 13px; margin-top: 4px; letter-spacing: 1px; }
+    .testimonial-quote {
+      font-size: 15px;
+      color: #444444;
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .testimonial-divider {
+      width: 32px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    /* ── CTA FINAL ──────────────────────────────────────────────────────── */
+    .cta-section {
+      background: #0A0A0A;
+      color: #FFFFFF;
+      text-align: center; padding: 110px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: "";
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px; height: 640px;
+      background: radial-gradient(circle, rgba(184,134,11,.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.15; max-width: 640px; margin: 0 auto;
+      position: relative; z-index: 1;
+      color: #FFFFFF;
+    }
+    .cta-sub {
+      margin: 20px auto 0; font-size: 16px; color: #888888;
+      max-width: 480px; line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+    .cta-actions {
+      margin-top: 44px;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: center; gap: 14px;
+      position: relative; z-index: 1;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────────── */
+    footer {
+      background: #0A0A0A;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 40px 48px 30px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: #888888;
+    }
+    footer .footer-brand { color: #FFFFFF; font-weight: 700; }
+    footer span { color: var(--gold); }
+
+    /* ── POST-STATS CTA TEXT ─────────────────────────────────────────────── */
+    .text-cta {
+      text-align: center;
+      padding: 52px 24px 60px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .text-cta p {
+      font-size: clamp(16px, 2.5vw, 21px);
+      font-weight: 600;
+      color: #0A0A0A;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 20px;
+    }
+    .text-cta a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: color .2s, opacity .2s;
+    }
+    .text-cta a:hover { color: #0A0A0A; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .orbital-section { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+      .orbital-left { justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .section { padding: 70px 20px; }
+      footer { padding: 24px 20px; }
+      .cards-grid { gap: 14px; }
+      .pilar-card { padding: 26px 20px; }
+      .orbital-wrapper { width: 280px; height: 280px; }
+      .orb-spoke { height: 115px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">Negócios de <span>Sucesso</span></div>
+    <a class="nav-cta"
+       href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20criar%20um%20site%20para%20minha%20empresa!"
+       target="_blank" rel="noopener">Quero criar meu site</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div id="hero-inner">
+      <div class="hero-badge" id="hero-badge">Criação de Site Profissional</div>
+
+      <h1 class="hero-headline" id="hero-headline">
+        Seu site profissional no ar em <em>48h</em> —<br />
+        já aparecendo no Google.
+      </h1>
+
+      <p class="hero-sub" id="hero-sub">
+        Sem site você é invisível. Em 48h colocamos sua empresa
+        no Google, com design exclusivo e pronto para converter.
+      </p>
+
+      <div class="hero-actions" id="hero-actions">
+        <a class="btn-primary" id="btn-cta-hero"
+           href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20criar%20um%20site%20para%20minha%20empresa!"
+           target="_blank" rel="noopener">
+          Garantir minha vaga →
+        </a>
+        <a class="btn-ghost" href="#como-funciona">Ver como funciona ↓</a>
+      </div>
+      <p style="margin-top:18px; font-size:13px; color:rgba(10,10,10,.45); text-align:center; letter-spacing:.2px;">
+        ✓ Entrega em 48h &nbsp;|&nbsp; ✓ Otimizado pro Google &nbsp;|&nbsp; ✓ Sem mensalidade obrigatória
+      </p>
+    </div>
+  </section>
+
+  <!-- TOOLS TICKER -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <!-- SET 1 -->
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span>Google</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#25D366"/><path fill="white" d="M17.2 14.5c-.28-.14-1.65-.82-1.9-.91-.26-.09-.45-.14-.64.14-.19.28-.73.91-.9 1.1-.16.18-.33.2-.6.07-1.65-.83-2.73-1.47-3.82-3.34-.29-.5.29-.47.83-1.57.09-.19.04-.35-.02-.49-.07-.14-.64-1.54-.87-2.1-.23-.56-.47-.48-.64-.49-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.77.36-.26.28-1 .98-1 2.4s1.02 2.78 1.16 2.97c.14.2 2.01 3.07 4.87 4.31 1.82.78 2.52.85 3.43.72.55-.09 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33z"/></svg>
+        <span>WhatsApp</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#E37400"/><rect x="5" y="14" width="3" height="5" rx="1" fill="white" opacity=".7"/><rect x="10.5" y="10" width="3" height="9" rx="1" fill="white" opacity=".85"/><rect x="16" y="6" width="3" height="13" rx="1" fill="white"/></svg>
+        <span>Google Analytics</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#34A853"/><path d="M12 6l-5 5 1.4 1.4L11 9.8V17h2V9.8l2.6 2.6L17 11l-5-5z" fill="white"/></svg>
+        <span>Search Console</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="white"/><circle cx="12" cy="12" r="1.5" fill="white"/></svg>
+        <span>Google Meu Negócio</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#4285F4"/><path d="M7 8h10v2H7V8zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" fill="white"/></svg>
+        <span>Tag Manager</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><defs><radialGradient id="ig-a" cx="30%" cy="110%" r="140%"><stop offset="0%" stop-color="#fdf497"/><stop offset="40%" stop-color="#fd5949"/><stop offset="65%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-a)"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.2" fill="white"/></svg>
+        <span>Instagram</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M14 8.5h-1.5C12 8.5 11.8 8.8 11.8 9.3V10.5h2.2l-.3 2.2h-1.9V18h-2.3v-5.3H8V10.5h1.5V9.1C9.5 7.4 10.6 6.5 12.1 6.5c.7 0 1.4.05 1.9.1V8.5z" fill="white"/></svg>
+        <span>Meta Ads</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M8 12a4 4 0 1 1 8 0v1H8v-1zm0 2h8l1 4H7l1-4z" fill="white"/><circle cx="12" cy="8" r="2.5" fill="white"/></svg>
+        <span>Google Ads</span>
+      </div>
+      <!-- SET 2 (duplicate for seamless loop) -->
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span>Google</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#25D366"/><path fill="white" d="M17.2 14.5c-.28-.14-1.65-.82-1.9-.91-.26-.09-.45-.14-.64.14-.19.28-.73.91-.9 1.1-.16.18-.33.2-.6.07-1.65-.83-2.73-1.47-3.82-3.34-.29-.5.29-.47.83-1.57.09-.19.04-.35-.02-.49-.07-.14-.64-1.54-.87-2.1-.23-.56-.47-.48-.64-.49-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.77.36-.26.28-1 .98-1 2.4s1.02 2.78 1.16 2.97c.14.2 2.01 3.07 4.87 4.31 1.82.78 2.52.85 3.43.72.55-.09 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33z"/></svg>
+        <span>WhatsApp</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#E37400"/><rect x="5" y="14" width="3" height="5" rx="1" fill="white" opacity=".7"/><rect x="10.5" y="10" width="3" height="9" rx="1" fill="white" opacity=".85"/><rect x="16" y="6" width="3" height="13" rx="1" fill="white"/></svg>
+        <span>Google Analytics</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#34A853"/><path d="M12 6l-5 5 1.4 1.4L11 9.8V17h2V9.8l2.6 2.6L17 11l-5-5z" fill="white"/></svg>
+        <span>Search Console</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="white"/><circle cx="12" cy="12" r="1.5" fill="white"/></svg>
+        <span>Google Meu Negócio</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#4285F4"/><path d="M7 8h10v2H7V8zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" fill="white"/></svg>
+        <span>Tag Manager</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><defs><radialGradient id="ig-b" cx="30%" cy="110%" r="140%"><stop offset="0%" stop-color="#fdf497"/><stop offset="40%" stop-color="#fd5949"/><stop offset="65%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-b)"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.2" fill="white"/></svg>
+        <span>Instagram</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M14 8.5h-1.5C12 8.5 11.8 8.8 11.8 9.3V10.5h2.2l-.3 2.2h-1.9V18h-2.3v-5.3H8V10.5h1.5V9.1C9.5 7.4 10.6 6.5 12.1 6.5c.7 0 1.4.05 1.9.1V8.5z" fill="white"/></svg>
+        <span>Meta Ads</span>
+      </div>
+      <div class="ticker-sep">·</div>
+      <div class="ticker-item">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#4285F4"/><path d="M8 12a4 4 0 1 1 8 0v1H8v-1zm0 2h8l1 4H7l1-4z" fill="white"/><circle cx="12" cy="8" r="2.5" fill="white"/></svg>
+        <span>Google Ads</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar reveal">
+    <div class="proof-item">
+      <span class="proof-icon">🚀</span>
+      <span>+200 sites entregues</span>
+    </div>
+    <div class="proof-sep">|</div>
+    <div class="proof-item">
+      <span class="proof-icon">⭐</span>
+      <span>Nota 5★ dos clientes</span>
+    </div>
+    <div class="proof-sep">|</div>
+    <div class="proof-item">
+      <span class="proof-icon">⚡</span>
+      <span>Resultado em até 48h</span>
+    </div>
+  </div>
+
+  <!-- PRICE ANCHOR -->
+  <div class="price-anchor">
+    Projetos a partir de <strong>R$ 797,90</strong><span>·</span>Proposta personalizada agora
+  </div>
+
+  <!-- PILARES -->
+  <div class="pilares-bg reveal">
+    <section class="section" id="pilares">
+      <span class="section-label">O que entregamos</span>
+      <h2 class="section-title" id="pilares-title">
+        Tudo que seu site precisa para funcionar de verdade.
+      </h2>
+      <p class="section-sub" id="pilares-sub">
+        Não entregamos só código. Entregamos um site que aparece,
+        converte e cresce junto com o seu negócio.
+      </p>
+
+      <div class="cards-grid">
+
+        <div class="pilar-card" id="card-1">
+          <span class="pilar-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </span>
+          <div class="pilar-title">
+            Site Profissional
+            <span class="pilar-title-tag">Pilar 01</span>
+          </div>
+          <p class="pilar-text">
+            <strong>Desenvolvemos seu site do zero</strong> — design exclusivo,
+            rápido, responsivo e pronto para converter visitante em cliente.
+            Nada de template genérico.
+          </p>
+          <div class="pilar-divider"></div>
+          <div style="position:absolute;bottom:-10px;right:16px;font-size:120px;font-weight:900;color:rgba(10,10,10,.04);line-height:1;pointer-events:none;user-select:none;">01</div>
+        </div>
+
+        <div class="pilar-card" id="card-2" style="border-color:#0A0A0A; background:#FFFFFF;">
+          <span class="pilar-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/>
+              <line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </span>
+          <div class="pilar-title">
+            Aparece no Google
+            <span class="pilar-title-tag">Pilar 02</span>
+          </div>
+          <p class="pilar-text">
+            <strong>Todo site que entregamos já sai otimizado para SEO.</strong>
+            Seu negócio encontrado por quem está procurando agora —
+            desde o primeiro dia no ar.
+          </p>
+          <div class="pilar-divider"></div>
+          <div style="position:absolute;bottom:-10px;right:16px;font-size:120px;font-weight:900;color:rgba(10,10,10,.04);line-height:1;pointer-events:none;user-select:none;">02</div>
+        </div>
+
+        <div class="pilar-card" id="card-3">
+          <span class="pilar-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </span>
+          <div class="pilar-title">
+            Integrado e Automatizado
+            <span class="pilar-title-tag">Pilar 03</span>
+          </div>
+          <p class="pilar-text">
+            <strong>WhatsApp, formulários, Google Analytics e automações</strong>
+            conectados desde o primeiro dia. Seu site trabalha por você
+            enquanto você foca no negócio.
+          </p>
+          <div class="pilar-divider"></div>
+          <div style="position:absolute;bottom:-10px;right:16px;font-size:120px;font-weight:900;color:rgba(10,10,10,.04);line-height:1;pointer-events:none;user-select:none;">03</div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- MID CTA -->
+  <div class="mid-cta reveal">
+    <a class="btn-primary"
+       href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20criar%20um%20site%20para%20minha%20empresa!"
+       target="_blank" rel="noopener">
+      Quero meu site agora →
+    </a>
+    <p style="margin-top:14px; font-size:13px; color:#444444;">Resposta em até 1h no horário comercial</p>
+  </div>
+
+  <!-- DEPOIMENTOS -->
+  <div class="testimonials-section reveal">
+    <div class="section" style="padding-top:80px; padding-bottom:80px;">
+      <span class="section-label">Depoimentos</span>
+      <h2 class="section-title">O que nossos clientes dizem.</h2>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">C</div>
+            <div>
+              <div class="testimonial-name">Carlos M.</div>
+              <div class="testimonial-company">Escritório de Advocacia</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testimonial-divider"></div>
+          <p class="testimonial-quote">"Em menos de 48h meu site estava no ar e já aparecia no Google. Nunca vi nada tão rápido e profissional."</p>
+        </div>
+
+        <div class="testimonial-card" style="border-color:#0A0A0A;">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">A</div>
+            <div>
+              <div class="testimonial-name">Ana P.</div>
+              <div class="testimonial-company">Clínica Odontológica</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testimonial-divider"></div>
+          <p class="testimonial-quote">"Tentei outras agências antes e sempre enrolação. Aqui foi diferente: briefing hoje, site publicado amanhã."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Rafael T.</div>
+              <div class="testimonial-company">Construtora</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testimonial-divider"></div>
+          <p class="testimonial-quote">"Além do site, me entregaram tudo integrado: WhatsApp, Analytics, Google. Valeu cada centavo."</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ORBITAL SECTION -->
+  <div style="background:#EDEDE8; border-top:1px solid #E0E0DA; border-bottom:1px solid #E0E0DA;">
+    <div class="orbital-section" id="orbital-section">
+
+      <div class="orbital-left" id="orbital-left">
+        <div class="orbital-wrapper">
+
+          <div class="orb-ring-outer"></div>
+          <div class="orb-ring-inner"></div>
+          <div class="orb-center-glow"></div>
+
+          <div class="orb-spinner">
+
+            <div class="orb-item" style="--deg:-90deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Design</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:-18deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">SEO</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:54deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Mobile</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:126deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Analytics</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="orb-item" style="--deg:198deg">
+              <div class="orb-spoke"></div>
+              <div class="orb-pos">
+                <div class="orb-content">
+                  <div class="orb-dot"></div>
+                  <span class="orb-label">Conversão</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="orb-center">
+            <div class="orb-brain-wrap">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="10" width="48" height="32" rx="4" stroke="#B8860B" stroke-width="1.6" opacity=".9"/>
+                <line x1="8" y1="34" x2="56" y2="34" stroke="#B8860B" stroke-width="1" opacity=".5"/>
+                <line x1="24" y1="46" x2="40" y2="46" stroke="#B8860B" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="32" y1="42" x2="32" y2="46" stroke="#B8860B" stroke-width="1.6" stroke-linecap="round"/>
+                <line x1="16" y1="20" x2="26" y2="20" stroke="#B8860B" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+                <line x1="16" y1="24" x2="36" y2="24" stroke="#B8860B" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+                <line x1="16" y1="28" x2="30" y2="28" stroke="#B8860B" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+                <circle class="brain-node" id="bn0" cx="16" cy="20" r="2" fill="#B8860B"/>
+                <circle class="brain-node" id="bn1" cx="16" cy="24" r="1.5" fill="#B8860B" opacity=".8"/>
+                <circle class="brain-node" id="bn2" cx="16" cy="28" r="1.5" fill="#B8860B" opacity=".8"/>
+                <circle class="brain-node" id="bn3" cx="48" cy="20" r="2" fill="#B8860B"/>
+                <circle class="brain-node" id="bn4" cx="36" cy="24" r="1.5" fill="#B8860B" opacity=".7"/>
+                <circle class="brain-node" id="bn5" cx="30" cy="28" r="1.5" fill="#B8860B" opacity=".6"/>
+                <circle class="brain-node" id="bn6" cx="26" cy="20" r="1.5" fill="#B8860B" opacity=".6"/>
+                <circle class="brain-node" id="bn7" cx="48" cy="28" r="1.5" fill="#B8860B" opacity=".5"/>
+              </svg>
+            </div>
+            <div class="orb-center-name">
+              Site que converte
+              <em>negociosdesucesso.com.br</em>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="orbital-right" id="orbital-right">
+        <span class="section-label">Tudo integrado no seu site</span>
+        <h2 class="section-title">
+          Cinco elementos que fazem seu site trabalhar por você.
+        </h2>
+        <p class="section-sub">
+          Um site bonito não basta. O resultado real vem quando design,
+          SEO, velocidade, analytics e conversão trabalham juntos —
+          desde o primeiro dia.
+        </p>
+
+        <div class="orb-features" id="orb-features">
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">Design exclusivo</div>
+              <div class="orb-feature-text">Cada site criado do zero para refletir a identidade do seu negócio. Nada de template copiado.</div>
+            </div>
+          </div>
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">SEO técnico incluído</div>
+              <div class="orb-feature-text">Estrutura otimizada para o Google já no lançamento. Seu site indexado e encontrável desde o primeiro dia.</div>
+            </div>
+          </div>
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">100% responsivo e rápido</div>
+              <div class="orb-feature-text">Perfeito em qualquer tela — celular, tablet ou computador. Velocidade que o Google aprova e o visitante não espera.</div>
+            </div>
+          </div>
+          <div class="orb-feature">
+            <div class="orb-feature-dot"></div>
+            <div>
+              <div class="orb-feature-title">Conversão e analytics configurados</div>
+              <div class="orb-feature-text">Botão de WhatsApp, formulários e rastreamento para você saber exatamente quantas visitas viram clientes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section" id="como-funciona">
+    <div class="section">
+      <span class="section-label">Como funciona</span>
+      <h2 class="section-title" id="how-title">
+        Do briefing ao site no ar em 48h.
+      </h2>
+      <div class="steps" id="steps-grid">
+        <div class="step reveal">
+          <div class="step-num"></div>
+          <div class="step-title">Briefing</div>
+          <div class="step-text">Entendemos seu negócio, público e objetivo. Nada de template: cada site é pensado para o seu cliente.</div>
+          <div class="step-time">Hora 1</div>
+        </div>
+        <div class="step reveal" style="transition-delay:.15s">
+          <div class="step-num"></div>
+          <div class="step-title">Design e Estrutura</div>
+          <div class="step-text">Criamos o layout, definimos a estrutura de conversão e aprovamos tudo com você antes de codar.</div>
+          <div class="step-time">Horas 2–8</div>
+        </div>
+        <div class="step reveal" style="transition-delay:.3s">
+          <div class="step-num"></div>
+          <div class="step-title">Desenvolvimento</div>
+          <div class="step-text">Codamos seu site com atenção máxima à performance, responsividade e SEO técnico. Cada detalhe revisado antes de publicar.</div>
+          <div class="step-time">Horas 8–24</div>
+        </div>
+        <div class="step reveal" style="transition-delay:.45s">
+          <div class="step-num"></div>
+          <div class="step-title">Publicação</div>
+          <div class="step-text">Seu site vai ao ar. Domínio configurado, hospedagem ativa, Analytics instalado. Em 48h, seu negócio visível no Google.</div>
+          <div class="step-time">Horas 24–48</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REALIDADE DO MERCADO -->
+  <section class="reveal" style="padding:80px 0; background:#F5F5F0; border-top:1px solid #E0E0DA; border-bottom:1px solid #E0E0DA;">
+    <div style="max-width:1100px; margin:0 auto; padding:0 24px; text-align:center;">
+      <span style="color:#B8860B; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;">A REALIDADE DO MERCADO</span>
+      <h2 style="font-size:clamp(28px,4vw,42px); font-weight:800; letter-spacing:-0.02em; margin:16px 0 48px; color:#0A0A0A;">
+        Cada dia sem um site é um cliente<br>que foi para o concorrente.
+      </h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+        <div style="background:#FFFFFF; border:1px solid #E0E0DA; border-left:3px solid #B8860B; border-radius:12px; padding:32px; text-align:left; box-shadow:0 2px 12px rgba(0,0,0,.06);">
+          <div style="font-size:36px; font-weight:800; color:#0A0A0A; margin-bottom:12px;">75%</div>
+          <p style="color:#444444; line-height:1.7;">dos consumidores julgam a credibilidade de um negócio pelo site. Sem site profissional, você perde antes de falar.</p>
+          <span style="font-size:11px; color:#888888; display:block; margin-top:12px;">Fonte: Stanford Web Credibility</span>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid #E0E0DA; border-left:3px solid #B8860B; border-radius:12px; padding:32px; text-align:left; box-shadow:0 2px 12px rgba(0,0,0,.06);">
+          <div style="font-size:36px; font-weight:800; color:#0A0A0A; margin-bottom:12px;">3s</div>
+          <p style="color:#444444; line-height:1.7;">é o tempo máximo que um usuário espera um site carregar antes de desistir e ir para o concorrente.</p>
+          <span style="font-size:11px; color:#888888; display:block; margin-top:12px;">Fonte: Google / Think with Google</span>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid #E0E0DA; border-left:3px solid #B8860B; border-radius:12px; padding:32px; text-align:left; box-shadow:0 2px 12px rgba(0,0,0,.06);">
+          <div style="font-size:36px; font-weight:800; color:#0A0A0A; margin-bottom:12px;">88%</div>
+          <p style="color:#444444; line-height:1.7;">dos usuários não voltam a um site após uma experiência ruim. Seu site só tem uma chance de impressionar.</p>
+          <span style="font-size:11px; color:#888888; display:block; margin-top:12px;">Fonte: Adobe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST-STATS TEXT CTA -->
+  <div class="text-cta reveal">
+    <p>Cada dia sem site é receita perdida.<br>Comece hoje — seu site no ar em 48h.</p>
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20criar%20um%20site%20para%20minha%20empresa!"
+       target="_blank" rel="noopener">Falar com especialista →</a>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section reveal" id="cta-final">
+    <div style="position:relative; z-index:1; margin-bottom:0;">
+      <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(184,134,11,.1); border:1px solid #B8860B; border-radius:999px; padding:6px 16px; margin-bottom:24px;">
+        <span style="width:8px; height:8px; background:#B8860B; border-radius:50%; animation:pulse-glow 1.5s infinite; display:inline-block;"></span>
+        <span style="color:#B8860B; font-size:12px; font-weight:700; letter-spacing:.12em;">● 3 VAGAS DISPONÍVEIS EM ABRIL</span>
+      </div>
+    </div>
+    <h2 class="cta-title">
+      Pronto para ter um site que trabalha por você?
+    </h2>
+    <p class="cta-sub">
+      Fale agora e receba um briefing gratuito. Sem enrolação —
+      em 48h seu negócio no ar e no Google.
+    </p>
+    <div class="cta-actions">
+      <a class="btn-gold pulse-btn" id="btn-cta-final"
+         href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20criar%20um%20site%20para%20minha%20empresa!"
+         target="_blank" rel="noopener">
+        Quero criar meu site →
+      </a>
+    </div>
+    <p style="margin-top:20px; font-size:13px; color:rgba(255,255,255,.45); position:relative; z-index:1;">
+      ✓ +200 sites entregues &nbsp;|&nbsp; ✓ Entrega em 48h &nbsp;|&nbsp; ✓ Sem mensalidade obrigatória
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div><span class="footer-brand">Negócios de Sucesso</span> · © 2026. Todos os direitos reservados. · CNPJ: 30.391.800/0001-41</div>
+    <div>Feito para quem leva o negócio a sério.</div>
+  </footer>
+
+  <script>
+  // ── GSAP ANIMATIONS ───────────────────────────────────────────────────────
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // HERO ENTRANCE
+    gsap.set("#navbar", { opacity: 0, y: -12 });
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.to("#navbar",         { opacity: 1, y: 0,  duration: .5 })
+      .from("#hero-badge",   { opacity: 0, y: -24, duration: .65 }, "-=.2")
+      .from("#hero-headline",{ opacity: 0, y: 50,  duration: .9  }, "-=.35")
+      .from("#hero-sub",     { opacity: 0, y: 28,  duration: .75 }, "-=.5")
+      .from("#hero-actions", { opacity: 0, y: 20,  duration: .65 }, "-=.4");
+
+    // HERO PARALLAX
+    gsap.to("#hero-inner", {
+      y: -70, ease: "none",
+      scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: 1.6 },
+    });
+
+    // PILARES
+    gsap.from(["#pilares .section-label", "#pilares-title", "#pilares-sub"], {
+      scrollTrigger: { trigger: "#pilares-title", start: "top 88%" },
+      opacity: 0, y: 28, stagger: .12, duration: .7, ease: "power2.out",
+    });
+    gsap.from(["#card-1","#card-2","#card-3"], {
+      scrollTrigger: { trigger: "#card-1", start: "top 86%" },
+      opacity: 0, y: 50, stagger: .15, duration: .85, ease: "power2.out",
+    });
+
+    // ORBITAL
+    gsap.from("#orbital-left", {
+      scrollTrigger: { trigger: "#orbital-section", start: "top 80%" },
+      opacity: 0, x: -50, duration: .9, ease: "power2.out",
+    });
+    gsap.from(["#orbital-right .section-label", "#orbital-right .section-title",
+               "#orbital-right .section-sub"], {
+      scrollTrigger: { trigger: "#orbital-section", start: "top 80%" },
+      opacity: 0, x: 40, stagger: .12, duration: .85, ease: "power2.out",
+    });
+    gsap.from("#orb-features .orb-feature", {
+      scrollTrigger: { trigger: "#orb-features", start: "top 85%" },
+      opacity: 0, y: 20, stagger: .1, duration: .6, ease: "power2.out",
+    });
+
+    // ORBITAL SPIN
+    const orbSpinner = document.querySelector(".orb-spinner");
+    if (orbSpinner) {
+      gsap.to(orbSpinner, {
+        rotation: 360, duration: 38, ease: "none",
+        repeat: -1, transformOrigin: "50% 50%",
+      });
+      const ITEM_OFFSETS = [-90, -18, 54, 126, 198];
+      const orbContents  = document.querySelectorAll(".orb-content");
+      gsap.ticker.add(() => {
+        const spinAngle = gsap.getProperty(orbSpinner, "rotation") % 360;
+        orbContents.forEach((el, i) => {
+          gsap.set(el, { rotation: -(spinAngle + ITEM_OFFSETS[i]) });
+        });
+      });
+    }
+
+    // BRAIN NODE PULSES
+    const brainNodes = document.querySelectorAll(".brain-node");
+    brainNodes.forEach((node, i) => {
+      gsap.to(node, {
+        opacity: 0.15, scale: 0.5,
+        duration: 0.7 + i * 0.12,
+        repeat: -1, yoyo: true, ease: "sine.inOut",
+        delay: i * 0.18, transformOrigin: "center center",
+      });
+    });
+    gsap.to(["#bn0", "#bn3"], {
+      attr: { r: 3.5 }, duration: 1.2,
+      repeat: -1, yoyo: true, ease: "sine.inOut", stagger: .6,
+    });
+
+    // HOW IT WORKS
+    gsap.from(["#how-title", ".how-section .section-label"], {
+      scrollTrigger: { trigger: "#how-title", start: "top 88%" },
+      opacity: 0, y: 24, stagger: .1, duration: .7, ease: "power2.out",
+    });
+
+    // CTA FINAL
+    gsap.from(["#cta-final .cta-title","#cta-final .cta-sub","#cta-final .cta-actions"], {
+      scrollTrigger: { trigger: "#cta-final", start: "top 82%" },
+      opacity: 0, y: 32, stagger: .18, duration: .75, ease: "power2.out",
+    });
+
+    // BRAIN BREATHE
+    gsap.to(".orb-brain-wrap svg", {
+      scale: 1.08, duration: 1.2,
+      repeat: -1, yoyo: true, ease: "sine.inOut",
+      transformOrigin: "50% 50%",
+    });
+
+    // HEARTBEAT — hero btn (dark shadow on dark button)
+    function heartbeatDark(el) {
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.8 });
+      tl.to(el, { boxShadow: "0 0 0 6px rgba(10,10,10,.14), 0 6px 28px rgba(10,10,10,.38)", duration: .12, ease: "power2.out" })
+        .to(el, { boxShadow: "0 0 0 0px rgba(10,10,10,0), 0 2px 12px rgba(10,10,10,.2)", duration: .3, ease: "power2.in" })
+        .to(el, { boxShadow: "0 0 0 4px rgba(10,10,10,.1), 0 4px 20px rgba(10,10,10,.28)", duration: .1, ease: "power2.out" })
+        .to(el, { boxShadow: "0 0 0 0px rgba(10,10,10,0), 0 2px 10px rgba(10,10,10,.16)", duration: .38, ease: "power2.in" });
+    }
+    // HEARTBEAT — CTA final btn (gold glow on gold button)
+    function heartbeatGold(el) {
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.6 });
+      tl.to(el, { boxShadow: "0 0 0 6px rgba(184,134,11,.22), 0 6px 32px rgba(184,134,11,.6)", duration: .12, ease: "power2.out" })
+        .to(el, { boxShadow: "0 0 0 0px rgba(184,134,11,0), 0 2px 14px rgba(184,134,11,.28)", duration: .28, ease: "power2.in" })
+        .to(el, { boxShadow: "0 0 0 4px rgba(184,134,11,.16), 0 4px 22px rgba(184,134,11,.48)", duration: .1, ease: "power2.out" })
+        .to(el, { boxShadow: "0 0 0 0px rgba(184,134,11,0), 0 2px 12px rgba(184,134,11,.22)", duration: .36, ease: "power2.in" });
+    }
+    heartbeatDark("#btn-cta-hero");
+    heartbeatGold("#btn-cta-final");
+  });
+
+  // ── REVEAL IntersectionObserver ─────────────────────────────────────────────
+  (function () {
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+  })();
+  </script>
+</body>
+</html>

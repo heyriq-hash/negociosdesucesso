@@ -1,0 +1,44 @@
+<svg width="500" height="500" viewBox="0 0 500 500"
+  xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Fundo círculo preto -->
+  <circle cx="250" cy="250" r="250" fill="#0A0A0A"/>
+
+  <!-- Seta de crescimento simples e limpa -->
+  <polyline
+    points="100,340 180,220 240,270 360,140"
+    fill="none"
+    stroke="#B8860B"
+    stroke-width="18"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <!-- Ponta da seta -->
+  <polygon
+    points="360,140 318,148 338,182"
+    fill="#B8860B"/>
+
+  <!-- Ponto de partida da seta -->
+  <circle cx="100" cy="340" r="10" fill="#B8860B"/>
+
+  <!-- Texto NEGÓCIOS DE -->
+  <text
+    x="250" y="410"
+    font-family="Georgia, serif"
+    font-size="44"
+    font-weight="700"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    letter-spacing="2">NEGÓCIOS DE</text>
+
+  <!-- Texto SUCESSO em dourado -->
+  <text
+    x="250" y="462"
+    font-family="Georgia, serif"
+    font-size="52"
+    font-weight="700"
+    fill="#B8860B"
+    text-anchor="middle"
+    letter-spacing="3">SUCESSO</text>
+
+</svg>

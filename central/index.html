@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Central de Operação — 2026</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07070c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Operação 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg:       #07070c;
+  --surf:     rgba(255,255,255,.04);
+  --surf-2:   rgba(255,255,255,.07);
+  --bdr:      rgba(255,255,255,.09);
+  --text:     #f0f0f6;
+  --muted:    rgba(240,240,246,.52);
+  --faint:    rgba(240,240,246,.27);
+  --accent:   #6366f1;
+  --acc2:     #818cf8;
+  --gold:     #f59e0b;
+  --gold-d:   rgba(245,158,11,.1);
+  --red:      #ef4444;
+  --red-d:    rgba(239,68,68,.09);
+  --green:    #10b981;
+  --purple:   #a855f7;
+  --r:        14px;
+  --safe-b:   env(safe-area-inset-bottom, 0px);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:calc(24px + var(--safe-b));
+}
+a { text-decoration:none; color:inherit; }
+
+/* ambient */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 100% 50% at 50% -8%, rgba(99,102,241,.13), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 70%,  rgba(168,85,247,.07),  transparent);
+  pointer-events:none; z-index:0;
+}
+/* grid */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.013) 1px, transparent 1px);
+  background-size:56px 56px;
+  pointer-events:none; z-index:0;
+}
+
+/* ── layout ── */
+.wrap { position:relative; z-index:1; }
+.px   { padding:0 clamp(16px,5vw,32px); }
+section { padding:clamp(44px,7vw,88px) 0; }
+
+/* ── fade-in ── */
+.fi { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.fi.vis { opacity:1; transform:none; }
+.fi.d1{transition-delay:.07s;} .fi.d2{transition-delay:.14s;} .fi.d3{transition-delay:.21s;}
+.fi.d4{transition-delay:.28s;} .fi.d5{transition-delay:.35s;} .fi.d6{transition-delay:.42s;}
+
+/* ── section label ── */
+.eyebrow {
+  font-size:9.5px; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--faint); margin-bottom:16px;
+  display:flex; align-items:center; gap:12px;
+}
+.eyebrow::after { content:''; flex:1; height:1px; background:var(--bdr); }
+
+.sec-h {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(20px,2.6vw,30px); font-weight:600;
+  letter-spacing:-.03em; line-height:1.2; margin-bottom:24px;
+}
+
+/* ── HERO ── */
+#hero {
+  min-height:100svh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding:80px clamp(16px,5vw,32px) 64px;
+}
+.hero-in { display:flex; flex-direction:column; align-items:center; }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--acc2);
+  border:1px solid rgba(99,102,241,.28); border-radius:100px;
+  padding:6px 14px; margin-bottom:32px;
+  animation:up .6s ease .1s both;
+}
+.bdot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pd 2s ease infinite; }
+@keyframes pd { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
+
+.hero-name {
+  font-size:clamp(11px,1.5vw,14px); font-weight:500; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:10px;
+  animation:up .6s ease .2s both;
+}
+.hero-clock {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(56px,18vw,120px); font-weight:700;
+  letter-spacing:-.06em; line-height:1;
+  background:linear-gradient(155deg,#fff 0%,rgba(255,255,255,.4) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 40px rgba(99,102,241,.25));
+  margin-bottom:6px;
+  animation:up .6s ease .32s both;
+}
+.hero-greet {
+  font-size:clamp(14px,3.5vw,17px); color:var(--muted); margin-bottom:24px;
+  animation:up .6s ease .42s both;
+}
+.hero-q {
+  font-size:clamp(13px,3.2vw,16px); color:var(--faint);
+  font-weight:300; font-style:italic; line-height:1.75;
+  max-width:400px;
+  animation:up .6s ease .52s both;
+}
+
+@keyframes up { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:none;} }
+
+/* ── MISSION ── */
+#mission { background:linear-gradient(180deg,transparent,rgba(99,102,241,.025),transparent); }
+.m-card {
+  padding:clamp(24px,5vw,48px);
+  background:rgba(99,102,241,.055);
+  border:1px solid rgba(99,102,241,.2);
+  border-radius:20px; position:relative; overflow:hidden;
+}
+.m-card::before {
+  content:''; position:absolute;
+  top:-50px; right:-50px; width:280px; height:280px; border-radius:50%;
+  background:radial-gradient(circle,rgba(99,102,241,.12),transparent 70%);
+  pointer-events:none;
+}
+.m-lbl { font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--acc2); margin-bottom:14px; }
+.m-txt {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(17px,3.2vw,26px); font-weight:500;
+  line-height:1.55; letter-spacing:-.02em; position:relative; z-index:1;
+}
+.b { color:var(--acc2); } .g { color:var(--gold); } .gr { color:var(--green); }
+
+/* ── NOPE ── */
+.ng { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+@media(max-width:480px){ .ng { grid-template-columns:1fr; } }
+.nc {
+  padding:18px 16px;
+  background:var(--red-d); border:1px solid rgba(239,68,68,.13); border-radius:var(--r);
+  display:flex; align-items:flex-start; gap:12px;
+  transition:background .2s, border-color .2s;
+}
+.nc:hover { background:rgba(239,68,68,.14); border-color:rgba(239,68,68,.24); }
+.nx {
+  width:24px; height:24px; border-radius:50%; flex-shrink:0; margin-top:1px;
+  background:rgba(239,68,68,.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:700; color:var(--red);
+}
+.nt { font-size:13px; font-weight:500; color:rgba(240,240,246,.82); line-height:1.45; }
+
+/* ── FOCO ── */
+.fg { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+@media(max-width:480px){ .fg { grid-template-columns:1fr 1fr; } }
+.fc {
+  padding:18px 14px;
+  background:var(--surf); border:1px solid var(--bdr); border-radius:var(--r);
+  transition:all .25s; cursor:default;
+}
+.fc:hover, .fc:active {
+  background:rgba(99,102,241,.08); border-color:rgba(99,102,241,.28); transform:translateY(-2px);
+}
+.fe { font-size:20px; margin-bottom:10px; display:block; }
+.ft { font-size:13px; font-weight:600; color:var(--text); margin-bottom:3px; }
+.fs { font-size:11px; color:var(--faint); }
+
+/* ── OPERAÇÃO ── */
+.og { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+@media(max-width:360px){ .og { grid-template-columns:1fr 1fr; } }
+.oc {
+  padding:20px 14px;
+  background:var(--surf); border:1px solid var(--bdr); border-radius:var(--r);
+  text-align:center; transition:all .25s; cursor:default;
+}
+.oc:hover, .oc:active {
+  transform:translateY(-3px); border-color:rgba(99,102,241,.22);
+  box-shadow:0 10px 30px rgba(99,102,241,.09); background:var(--surf-2);
+}
+.oi {
+  width:42px; height:42px; border-radius:12px;
+  background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; margin:0 auto 12px;
+}
+.ot { font-size:12.5px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.os { font-size:10.5px; color:var(--faint); }
+
+/* ── EDITORIAL ── */
+.ew { display:flex; flex-wrap:wrap; gap:8px; }
+.et {
+  display:flex; align-items:center; gap:7px;
+  padding:9px 14px; border:1px solid var(--bdr); border-radius:100px;
+  background:var(--surf); font-size:13px; font-weight:500; color:var(--muted);
+  transition:all .2s; cursor:default;
+}
+.et:hover, .et:active { border-color:rgba(255,255,255,.16); color:var(--text); }
+.ed { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+
+/* ── ROTINA ── */
+.tl { position:relative; padding-left:26px; }
+.tl::before {
+  content:''; position:absolute; left:6px; top:8px; bottom:8px; width:1px;
+  background:linear-gradient(to bottom,var(--accent),var(--purple),rgba(168,85,247,0));
+  opacity:.22;
+}
+.ti { display:flex; align-items:flex-start; gap:16px; padding:12px 0; position:relative; }
+.td {
+  position:absolute; left:-22px; top:50%; transform:translateY(-50%);
+  width:12px; height:12px; border-radius:50%;
+  background:var(--bg); border:1.5px solid rgba(255,255,255,.14);
+  transition:border-color .2s, box-shadow .2s;
+}
+.ti:hover .td, .ti:active .td { border-color:var(--accent); box-shadow:0 0 8px rgba(99,102,241,.4); }
+.tt {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:11px; font-weight:600; color:var(--acc2);
+  min-width:48px; padding-top:1px; flex-shrink:0;
+}
+.tbt .tb-t { font-size:13.5px; font-weight:600; color:var(--text); margin-bottom:1px; }
+.tbt .tb-d { font-size:11.5px; color:var(--faint); line-height:1.45; }
+
+/* ── QUOTE ── */
+#quote {
+  text-align:center;
+  padding:clamp(60px,11vw,120px) clamp(16px,5vw,32px);
+  position:relative;
+}
+#quote::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(99,102,241,.07),transparent);
+  pointer-events:none;
+}
+.qt {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(22px,6vw,56px); font-weight:700;
+  letter-spacing:-.04em; line-height:1.13; max-width:780px; margin:0 auto;
+  background:linear-gradient(145deg,#fff 20%,rgba(255,255,255,.35) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  position:relative; z-index:1;
+}
+.qs { margin-top:18px; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); position:relative;z-index:1; }
+
+/* ── VISÃO ── */
+.vg { display:grid; grid-template-columns:repeat(2,1fr); gap:9px; }
+@media(min-width:640px){ .vg { grid-template-columns:repeat(4,1fr); } }
+.vc {
+  padding:18px 16px;
+  background:var(--surf); border:1px solid var(--bdr); border-radius:var(--r);
+  transition:all .25s; cursor:default;
+}
+.vc:hover, .vc:active { background:var(--gold-d); border-color:rgba(245,158,11,.18); transform:translateY(-2px); }
+.vi { font-size:22px; margin-bottom:8px; display:block; }
+.vt { font-size:13px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.vs { font-size:11px; color:var(--faint); }
+
+/* ── FOOTER ── */
+footer {
+  padding:32px 0 calc(20px + var(--safe-b));
+  border-top:1px solid var(--bdr);
+  text-align:center; color:var(--faint); font-size:11px;
+  position:relative; z-index:1;
+}
+footer strong { color:var(--muted); font-weight:500; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-in">
+    <div class="hero-badge"><div class="bdot"></div>Central de Operação — 2026</div>
+    <div class="hero-name">Henrique Gonçalves</div>
+    <div class="hero-clock" id="clock">00:00:00</div>
+    <div class="hero-greet" id="greeting"></div>
+    <div class="hero-q">"Empresas fortes não dependem da sorte.<br>Dependem de estrutura."</div>
+  </div>
+</section>
+
+<!-- MISSÃO -->
+<section id="mission">
+  <div class="px">
+    <div class="eyebrow">Missão</div>
+    <div class="m-card fi">
+      <div class="m-lbl">Por que você acorda todo dia</div>
+      <div class="m-txt">Construir uma máquina de aquisição, posicionamento e automação que gere <span class="b">previsibilidade</span>, <span class="g">autoridade</span> e <span class="gr">liberdade</span>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NÃO POSSO ESQUECER -->
+<section id="nope">
+  <div class="px">
+    <div class="eyebrow">Proteções mentais</div>
+    <div class="sec-h fi">O que não posso fazer</div>
+    <div class="ng">
+      <div class="nc fi d1"><div class="nx">✕</div><div class="nt">Mudar de direção toda semana sem executar</div></div>
+      <div class="nc fi d2"><div class="nx">✕</div><div class="nt">Buscar perfeição antes de lançar e testar</div></div>
+      <div class="nc fi d3"><div class="nx">✕</div><div class="nt">Abandonar a operação no caos inicial</div></div>
+      <div class="nc fi d4"><div class="nx">✕</div><div class="nt">Dispersar em 10 projetos sem profundidade</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCO DO MOMENTO -->
+<section id="foco">
+  <div class="px">
+    <div class="eyebrow">Prioridades diárias</div>
+    <div class="sec-h fi">Foco do momento</div>
+    <div class="fg">
+      <div class="fc fi d1"><span class="fe">📡</span><div class="ft">Prospectar</div><div class="fs">Todo dia</div></div>
+      <div class="fc fi d2"><span class="fe">🎬</span><div class="ft">1 Reel/dia</div><div class="fs">Consistência</div></div>
+      <div class="fc fi d3"><span class="fe">⚙️</span><div class="ft">Operação</div><div class="fs">1% melhor</div></div>
+      <div class="fc fi d4"><span class="fe">🤝</span><div class="ft">Fechar</div><div class="fs">Conversão</div></div>
+      <div class="fc fi d5"><span class="fe">🏛️</span><div class="ft">Autoridade</div><div class="fs">Posição</div></div>
+      <div class="fc fi d6"><span class="fe">🔁</span><div class="ft">Follow-up</div><div class="fs">Persistência</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERAÇÃO -->
+<section id="operacao">
+  <div class="px">
+    <div class="eyebrow">Pilares da máquina</div>
+    <div class="sec-h fi">Operação</div>
+    <div class="og">
+      <div class="oc fi d1"><div class="oi">🎯</div><div class="ot">SDR</div><div class="os">1º contato</div></div>
+      <div class="oc fi d2"><div class="oi">📊</div><div class="ot">CRM</div><div class="os">Pipeline</div></div>
+      <div class="oc fi d3"><div class="oi">📲</div><div class="ot">Conteúdo</div><div class="os">Autoridade</div></div>
+      <div class="oc fi d4"><div class="oi">🔍</div><div class="ot">Prospecção</div><div class="os">Volume</div></div>
+      <div class="oc fi d5"><div class="oi">🤖</div><div class="ot">Automação</div><div class="os">Escala</div></div>
+      <div class="oc fi d6"><div class="oi">💰</div><div class="ot">Fechamentos</div><div class="os">Resultado</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section id="editorial">
+  <div class="px">
+    <div class="eyebrow">Instagram</div>
+    <div class="sec-h fi">Linha editorial</div>
+    <div class="ew fi d1">
+      <div class="et"><div class="ed" style="background:#6366f1"></div>Estratégia</div>
+      <div class="et"><div class="ed" style="background:#f59e0b"></div>Bastidor</div>
+      <div class="et"><div class="ed" style="background:#10b981"></div>Operação</div>
+      <div class="et"><div class="ed" style="background:#ec4899"></div>Pixel</div>
+      <div class="et"><div class="ed" style="background:#a855f7"></div>Remarketing</div>
+      <div class="et"><div class="ed" style="background:#06b6d4"></div>IA</div>
+      <div class="et"><div class="ed" style="background:#f97316"></div>Estrutura digital</div>
+      <div class="et"><div class="ed" style="background:#84cc16"></div>Lifestyle estratégico</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROTINA -->
+<section id="rotina">
+  <div class="px">
+    <div class="eyebrow">Ritmo de execução</div>
+    <div class="sec-h fi">Rotina do fundador</div>
+    <div class="tl">
+      <div class="ti fi d1"><div class="td"></div><div class="tt">05h30</div><div class="tbt"><div class="tb-t">Cachorros</div><div class="tb-d">Movimento e clareza mental</div></div></div>
+      <div class="ti fi d2"><div class="td"></div><div class="tt">09h00</div><div class="tbt"><div class="tb-t">Escritório</div><div class="tb-d">Trabalho profundo — sem distrações</div></div></div>
+      <div class="ti fi d2"><div class="td"></div><div class="tt">Manhã</div><div class="tbt"><div class="tb-t">Prospecção</div><div class="tb-d">Volume no pico de energia</div></div></div>
+      <div class="ti fi d3"><div class="td"></div><div class="tt">Tarde</div><div class="tbt"><div class="tb-t">Conteúdo</div><div class="tb-d">Gravar, editar, publicar — 1 reel</div></div></div>
+      <div class="ti fi d4"><div class="td"></div><div class="tt">Tarde</div><div class="tbt"><div class="tb-t">Operação</div><div class="tb-d">CRM, follow-ups, propostas, fechamentos</div></div></div>
+      <div class="ti fi d5"><div class="td"></div><div class="tt">Noite</div><div class="tbt"><div class="tb-t">Família + Academia</div><div class="tb-d">Energia para o próximo dia</div></div></div>
+      <div class="ti fi d6"><div class="td"></div><div class="tt">22h00</div><div class="tbt"><div class="tb-t">Planejamento</div><div class="tb-d">Revisar o dia, priorizar amanhã</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FRASE CENTRAL -->
+<section id="quote">
+  <div class="qt fi">"Empresas perdem dinheiro<br>por falta de estrutura."</div>
+  <div class="qs fi d2">— Princípio de operação</div>
+</section>
+
+<!-- VISÃO FINAL -->
+<section id="vision">
+  <div class="px">
+    <div class="eyebrow">Destino</div>
+    <div class="sec-h fi">O que estou construindo</div>
+    <div class="vg">
+      <div class="vc fi d1"><span class="vi">👥</span><div class="vt">Equipe</div><div class="vs">Pessoas certas</div></div>
+      <div class="vc fi d2"><span class="vi">🏆</span><div class="vt">Autoridade</div><div class="vs">Referência no nicho</div></div>
+      <div class="vc fi d3"><span class="vi">🌐</span><div class="vt">Networking</div><div class="vs">Conexões que multiplicam</div></div>
+      <div class="vc fi d4"><span class="vi">🕊️</span><div class="vt">Liberdade</div><div class="vs">Negócio sem minha presença</div></div>
+      <div class="vc fi d5"><span class="vi">⚡</span><div class="vt">Operação forte</div><div class="vs">Processos que escalam</div></div>
+      <div class="vc fi d6"><span class="vi">🔄</span><div class="vt">Recorrência</div><div class="vs">Clientes que ficam</div></div>
+      <div class="vc fi d1"><span class="vi">📸</span><div class="vt">Instagram</div><div class="vs">Audiência que converte</div></div>
+      <div class="vc fi d2"><span class="vi">🏗️</span><div class="vt">Empresa sólida</div><div class="vs">Base que resiste</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="px">
+    <div style="letter-spacing:.14em;font-size:9px;text-transform:uppercase;margin-bottom:3px;">Central de Operação</div>
+    <div><strong>Henrique Gonçalves</strong> — 2026</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+function tick() {
+  const now = new Date();
+  const p = n => String(n).padStart(2,'0');
+  document.getElementById('clock').textContent = `${p(now.getHours())}:${p(now.getMinutes())}:${p(now.getSeconds())}`;
+  const h = now.getHours();
+  document.getElementById('greeting').textContent =
+    h >= 5  && h < 12 ? 'Bom dia, Henrique.' :
+    h >= 12 && h < 18 ? 'Boa tarde, Henrique.' :
+                        'Boa noite, Henrique.';
+}
+tick();
+setInterval(tick, 1000);
+
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('vis'); }), { threshold:.08 });
+document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

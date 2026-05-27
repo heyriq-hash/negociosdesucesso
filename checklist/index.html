@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18112706480"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18112706480');
+  </script>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '990807160198352');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=990807160198352&ev=PageView&noscript=1"/></noscript>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist Gratuito — A Base Digital do Negócio de Sucesso</title>
+  <meta name="description" content="Baixe grátis o checklist completo com tudo que sua empresa precisa ter estruturado no digital para ser encontrada, escolhida e lembrada todos os dias." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://negociosdesucesso.com.br/checklist/" />
+  <meta property="og:title" content="Checklist Gratuito — A Base Digital do Negócio de Sucesso" />
+  <meta property="og:description" content="Tudo que sua empresa precisa ter estruturado no digital para ser encontrada, escolhida e lembrada todos os dias." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: rgba(245,166,35,.3); color: #fff; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,166,35,.5); }
+      50%       { box-shadow: 0 0 0 14px rgba(245,166,35,0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .3; transform: scale(.6); }
+    }
+    @keyframes shimmer-improviso {
+      0%   { background-position: 200% 0; }
+      45%  { background-position: 0% 0; }
+      55%  { background-position: 0% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50%       { transform: translateY(-18px) rotate(1deg); }
+    }
+    @keyframes float-mobile {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-5px); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes confetti-fall {
+      0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(80px) rotate(720deg); opacity: 0; }
+    }
+    @keyframes item-appear {
+      from { opacity: 0; transform: translateX(-12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .pulse-btn { animation: pulse-glow 2s infinite; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    :root {
+      --gold:     #F5A623;
+      --gold-dim: #c8831a;
+      --bg:       #080808;
+      --surface:  #0f0f0f;
+      --border:   #1e1e1e;
+      --text:     #f0f0f0;
+      --muted:    #888888;
+      --radius:   14px;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(245,166,35,.15);
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
+    .nav-logo span { color: var(--gold); }
+    .nav-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.2);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 11px; font-weight: 600; color: var(--gold); letter-spacing: .5px;
+    }
+    .nav-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse 2s infinite; display: inline-block;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 110px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(245,166,35,.09) 0%, transparent 65%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 25%, rgba(8,8,8,.8) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-inner {
+      position: relative; z-index: 10;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 72px;
+    }
+
+    /* ── HERO LEFT ── */
+    .hero-left { display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.25);
+      border-radius: 100px; padding: 7px 18px;
+      font-size: 11px; font-weight: 600; color: var(--gold);
+      letter-spacing: .8px; text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); animation: pulse 2s infinite;
+    }
+    .hero-headline {
+      font-size: clamp(30px, 4.2vw, 58px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -1.5px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold) 0%, #fff0bb 35%, #ffe480 50%, #fff0bb 65%, var(--gold) 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer-improviso 4s ease-in-out infinite;
+    }
+    .hero-sub {
+      margin-top: 24px; font-size: 16px; font-weight: 300;
+      line-height: 1.7; color: #999; max-width: 480px;
+    }
+    .hero-cta-wrap { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; }
+    .hero-guarantee {
+      font-size: 13px; color: #666;
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .hero-guarantee span { color: rgba(245,166,35,.7); margin-right: 4px; }
+
+    /* ── HERO RIGHT — MOCKUP ── */
+    .hero-right {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .mockup-wrap {
+      position: relative; z-index: 1;
+      animation: float 5s ease-in-out infinite;
+      filter: drop-shadow(0 32px 64px rgba(245,166,35,.18));
+    }
+    .mockup-card {
+      width: 320px;
+      background: linear-gradient(145deg, #141210 0%, #0e0c0a 100%);
+      border: 1px solid rgba(245,166,35,.35);
+      border-radius: 18px;
+      padding: 28px 26px 24px;
+      box-shadow:
+        0 0 0 1px rgba(245,166,35,.08),
+        0 40px 80px rgba(0,0,0,.7),
+        inset 0 1px 0 rgba(245,166,35,.12);
+      position: relative; overflow: visible; z-index: 10;
+    }
+    .mockup-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(245,166,35,.6) 50%, transparent 100%);
+    }
+    .mockup-card::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(245,166,35,.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .mockup-badge {
+      position: absolute; top: -10px; right: 16px; z-index: 2;
+      background: var(--gold); color: #000;
+      font-size: 10px; font-weight: 800; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 100px;
+      box-shadow: 0 4px 12px rgba(245,166,35,.45);
+    }
+    .mockup-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(245,166,35,.1);
+    }
+    .mockup-logo-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(245,166,35,.12); border: 1px solid rgba(245,166,35,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .mockup-logo-text { font-size: 11px; font-weight: 700; line-height: 1.3; }
+    .mockup-logo-text small { display: block; font-size: 10px; color: var(--muted); font-weight: 400; }
+    .mockup-title {
+      font-size: 13px; font-weight: 700; color: var(--gold);
+      letter-spacing: .3px; margin-bottom: 16px;
+    }
+    .mockup-items { display: flex; flex-direction: column; gap: 10px; }
+    .mockup-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 500;
+    }
+    .mockup-item.unlocked { color: var(--text); }
+    .mockup-item.blurred  { color: #555; }
+    .mockup-item.blurred .mockup-item-text {
+      filter: blur(4px); user-select: none; pointer-events: none;
+    }
+    .mockup-check {
+      width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+    }
+    .mockup-check.done {
+      background: rgba(245,166,35,.15); border: 1px solid rgba(245,166,35,.4);
+      color: var(--gold);
+    }
+    .mockup-check.lock {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      color: #444; font-size: 9px;
+    }
+    .mockup-footer {
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px solid rgba(245,166,35,.08);
+      font-size: 11px; color: var(--muted); text-align: center;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #000;
+      font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700;
+      padding: 16px 32px; border-radius: 10px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 0 40px rgba(245,166,35,.3);
+      transition: background .2s, box-shadow .2s, color .2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
+      transform: translateX(-100%); transition: transform .5s;
+    }
+    .btn-primary:hover::after { transform: translateX(100%); }
+    .btn-primary:hover { background: var(--gold-dim); color: #fff; box-shadow: 0 0 64px rgba(245,166,35,.55); }
+
+    /* ── SECTION COMMONS ── */
+    .section { max-width: 1100px; margin: 0 auto; padding: 96px 48px; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 42px); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.15;
+    }
+    .section-sub {
+      margin-top: 12px; font-size: 16px; color: var(--muted); line-height: 1.6;
+    }
+
+    /* ── PREVIEW CHECKLIST ── */
+    .preview-section {
+      background: var(--surface);
+      border-top: 1px solid rgba(245,166,35,.07);
+      border-bottom: 1px solid rgba(245,166,35,.07);
+    }
+    .preview-section .section { padding-top: 88px; padding-bottom: 88px; }
+    .preview-card {
+      max-width: 620px; margin: 44px auto 0;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(245,166,35,.15);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .preview-list { list-style: none; }
+    .preview-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      font-size: 14px; font-weight: 500;
+      opacity: 0;
+    }
+    .preview-item:last-child { border-bottom: none; }
+    .preview-item.unlocked { color: var(--text); }
+    .preview-item.unlocked:hover { background: rgba(245,166,35,.04); transition: background .2s; }
+    .preview-item.locked   { color: #555; }
+    .preview-item.locked .preview-text {
+      filter: blur(3.5px); user-select: none; pointer-events: none;
+    }
+    .preview-icon { font-size: 17px; flex-shrink: 0; width: 22px; text-align: center; }
+    .preview-footer {
+      padding: 18px 24px;
+      background: rgba(245,166,35,.04);
+      border-top: 1px solid rgba(245,166,35,.1);
+      text-align: center;
+    }
+    .preview-unlock-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); font-size: 14px; font-weight: 700;
+      text-decoration: none; letter-spacing: .3px;
+      transition: opacity .2s;
+    }
+    .preview-unlock-btn:hover { opacity: .7; }
+
+    /* ── PARA QUEM ── */
+    .paraquem-section { background: var(--bg); }
+    .paraquem-section .section { padding-top: 88px; padding-bottom: 88px; }
+    .paraquem-list { list-style: none; margin-top: 40px; display: flex; flex-direction: column; gap: 0; max-width: 680px; }
+    .paraquem-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(245,166,35,.07);
+    }
+    .paraquem-item:first-child { border-top: 1px solid rgba(245,166,35,.07); }
+    .paraquem-arrow {
+      width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0; margin-top: 1px;
+      background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 14px; font-weight: 700;
+    }
+    .paraquem-text { font-size: 16px; font-weight: 500; line-height: 1.55; color: var(--text); }
+    .paraquem-text em { font-style: normal; color: var(--gold); }
+
+    /* ── FORM SECTION ── */
+    .form-section {
+      background: #111111;
+      border-top: 1px solid rgba(245,166,35,.07);
+      border-bottom: 1px solid rgba(245,166,35,.07);
+    }
+    .form-section .section { padding-top: 88px; padding-bottom: 88px; text-align: center; }
+    .form-wrapper {
+      max-width: 500px; margin: 44px auto 0;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .form-input {
+      width: 100%; background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 10px;
+      padding: 16px 20px; font-family: 'Sora', sans-serif;
+      font-size: 15px; color: var(--text); outline: none;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .form-input::placeholder { color: #555; }
+    .form-input:focus {
+      border-color: rgba(245,166,35,.6);
+      box-shadow: 0 0 0 3px rgba(245,166,35,.1);
+    }
+    .form-btn {
+      width: 100%; background: var(--gold); color: #000;
+      font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700;
+      padding: 18px 32px; border-radius: 10px; border: none; cursor: pointer;
+      box-shadow: 0 0 40px rgba(245,166,35,.3);
+      transition: background .2s, box-shadow .2s, color .2s;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .form-btn::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
+      transform: translateX(-100%); transition: transform .5s;
+    }
+    .form-btn:hover::after { transform: translateX(100%); }
+    .form-btn:hover:not(:disabled) { background: var(--gold-dim); color: #fff; box-shadow: 0 0 64px rgba(245,166,35,.55); }
+    .form-btn:disabled { opacity: .75; cursor: not-allowed; }
+    .btn-spinner {
+      display: none; width: 18px; height: 18px; flex-shrink: 0;
+      border: 2px solid rgba(0,0,0,.3); border-top-color: #000;
+      border-radius: 50%; animation: spin .6s linear infinite;
+    }
+    .form-btn.loading .btn-spinner { display: block; }
+    .form-btn.loading .btn-label { visibility: hidden; width: 0; overflow: hidden; }
+    .form-guarantee {
+      font-size: 13px; color: #555; text-align: center; margin-top: 2px;
+    }
+    .form-guarantee span { color: rgba(245,166,35,.7); }
+
+    /* ── CONFETTI ── */
+    #confetti-container {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden;
+    }
+    .confetti-piece {
+      position: absolute; width: 8px; height: 8px; border-radius: 2px;
+      animation: confetti-fall .9s ease-out forwards;
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      text-align: center; padding: 110px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(245,166,35,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-title { font-size: clamp(28px, 4.5vw, 50px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; max-width: 600px; margin: 0 auto 18px; position: relative; z-index: 1; }
+    .cta-sub   { font-size: clamp(15px, 1.8vw, 18px); color: var(--muted); max-width: 440px; margin: 0 auto 38px; line-height: 1.6; position: relative; z-index: 1; }
+    .cta-actions { position: relative; z-index: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(245,166,35,.08); padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted);
+    }
+    footer strong { color: var(--gold); font-weight: 600; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { padding: 110px 24px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-left  { align-items: center; order: 1; }
+      .hero-right { order: 2; padding-bottom: 40px; }
+      .hero-sub   { max-width: 100%; }
+      .hero-guarantee { justify-content: center; }
+      .mockup-wrap { animation: float-mobile 5s ease-in-out infinite; }
+      .mockup-card { width: 100%; max-width: 320px; padding: 22px 20px 18px; }
+      .mockup-title { font-size: 12px; }
+      .mockup-item  { font-size: 12px; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-badge { display: none; }
+      .hero-headline { font-size: 2.1rem; letter-spacing: -1px; }
+      .section { padding: 48px 20px; }
+      .paraquem-section .section { padding-bottom: 40px; }
+      .form-section .section { padding-top: 40px; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+      .btn-primary, .form-btn { width: 100%; justify-content: center; }
+      .hero { padding-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="confetti-container"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">Negócios de <strong>Sucesso</strong></div>
+    <div class="nav-badge"><span class="nav-badge-dot"></span> Material Gratuito</div>
+  </nav>
+
+  <!-- HERO — 2 colunas -->
+  <section class="hero" id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-glow"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-inner">
+
+      <!-- COLUNA ESQUERDA -->
+      <div class="hero-left" id="hero-left">
+        <div class="hero-badge" id="hero-badge">Material Gratuito</div>
+
+        <h1 class="hero-headline" id="hero-headline">
+          A Base Digital do<br>
+          Negócio de <em>Sucesso</em>
+        </h1>
+
+        <p class="hero-sub" id="hero-sub">
+          Tudo que sua empresa precisa ter estruturado no digital para ser encontrada,
+          escolhida e lembrada — todos os dias, por quem realmente tem interesse
+          no que você vende.
+        </p>
+
+        <div class="hero-cta-wrap" id="hero-actions">
+          <a class="btn-primary pulse-btn" href="#formulario">
+            Quero receber o checklist →
+          </a>
+          <div class="hero-guarantee">
+            <div><span>✓</span> 100% gratuito</div>
+            <div><span>✓</span> Entrega no WhatsApp</div>
+            <div><span>✓</span> Sem spam</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA — MOCKUP -->
+      <div class="hero-right" id="hero-right">
+        <div class="mockup-wrap">
+          <div class="mockup-card">
+            <div class="mockup-badge">10+ itens</div>
+            <div class="mockup-header">
+              <div class="mockup-logo-icon">📋</div>
+              <div class="mockup-logo-text">
+                Negócios de Sucesso
+                <small>negociosdesucesso.com.br</small>
+              </div>
+            </div>
+            <div class="mockup-title">Checklist — Base Digital</div>
+            <div class="mockup-items">
+              <div class="mockup-item unlocked">
+                <div class="mockup-check done">✓</div>
+                <span class="mockup-item-text">Google Meu Negócio</span>
+              </div>
+              <div class="mockup-item unlocked">
+                <div class="mockup-check done">✓</div>
+                <span class="mockup-item-text">Site profissional</span>
+              </div>
+              <div class="mockup-item unlocked">
+                <div class="mockup-check done">✓</div>
+                <span class="mockup-item-text">SEO técnico</span>
+              </div>
+              <div class="mockup-item unlocked">
+                <div class="mockup-check done">✓</div>
+                <span class="mockup-item-text">Analytics + Pixel</span>
+              </div>
+              <div class="mockup-item unlocked">
+                <div class="mockup-check done">✓</div>
+                <span class="mockup-item-text">Integrações</span>
+              </div>
+              <div class="mockup-item blurred">
+                <div class="mockup-check lock">🔒</div>
+                <span class="mockup-item-text">Automações básicas</span>
+              </div>
+              <div class="mockup-item blurred">
+                <div class="mockup-check lock">🔒</div>
+                <span class="mockup-item-text">Avaliações no Google</span>
+              </div>
+              <div class="mockup-item blurred">
+                <div class="mockup-check lock">🔒</div>
+                <span class="mockup-item-text">Instagram integrado</span>
+              </div>
+            </div>
+            <div class="mockup-footer">
+              🔓 Desbloqueie o checklist completo
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARA QUEM É ESSE CHECKLIST -->
+  <div class="paraquem-section">
+    <div class="section">
+      <span class="section-label reveal">Para quem é esse checklist?</span>
+      <h2 class="section-title reveal">Para quem é esse checklist?</h2>
+
+      <ul class="paraquem-list">
+        <li class="paraquem-item reveal">
+          <div class="paraquem-arrow">→</div>
+          <p class="paraquem-text">
+            Donos de negócio que querem <em>aparecer no Google</em> sem depender de tráfego pago
+          </p>
+        </li>
+        <li class="paraquem-item reveal" style="transition-delay:.1s">
+          <div class="paraquem-arrow">→</div>
+          <p class="paraquem-text">
+            Empresas que têm produto bom mas são <em>invisíveis no digital</em>
+          </p>
+        </li>
+        <li class="paraquem-item reveal" style="transition-delay:.2s">
+          <div class="paraquem-arrow">→</div>
+          <p class="paraquem-text">
+            Quem quer uma <em>base sólida</em> antes de investir em anúncios
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <div class="form-section" id="formulario">
+    <div class="section">
+      <span class="section-label reveal">Acesso gratuito e imediato</span>
+      <h2 class="section-title reveal" style="max-width:100%; margin:0 auto;">
+        Receba agora pelo WhatsApp
+      </h2>
+      <p class="section-sub reveal" style="max-width:100%; margin:10px auto 0;">
+        Gratuito. Sem enrolação. Direto no seu WhatsApp em segundos.
+      </p>
+
+      <div class="form-wrapper reveal">
+        <input class="form-input" id="input-nome" type="text"
+               placeholder="Seu nome" autocomplete="name" />
+        <input class="form-input" id="input-telefone" type="tel"
+               placeholder="Seu WhatsApp (11) 99999-9999" autocomplete="tel" maxlength="15" />
+        <button class="form-btn pulse-btn" id="form-btn" onclick="enviarFormulario()">
+          <div class="btn-spinner"></div>
+          <span class="btn-label" id="btn-label">Quero receber o checklist →</span>
+        </button>
+        <p class="form-guarantee">
+          <span>✓</span> 100% gratuito &nbsp;|&nbsp;
+          <span>✓</span> Sem spam &nbsp;|&nbsp;
+          <span>✓</span> Receba em segundos
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section reveal" id="cta-final">
+    <div style="position:relative;z-index:1;margin-bottom:0;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.3);border-radius:999px;padding:6px 16px;margin-bottom:24px;">
+        <span style="width:8px;height:8px;background:#F5A623;border-radius:50%;animation:pulse-glow 1.5s infinite;display:inline-block;"></span>
+        <span style="color:#F5A623;font-size:12px;font-weight:700;letter-spacing:1px;">● ACESSO GRATUITO E IMEDIATO</span>
+      </div>
+    </div>
+    <h2 class="cta-title">Sua empresa merece uma base digital sólida.</h2>
+    <p class="cta-sub">Receba o checklist agora e comece hoje.</p>
+    <div class="cta-actions">
+      <button class="btn-primary pulse-btn" onclick="ctaFinalClick()">
+        Quero receber o checklist →
+      </button>
+    </div>
+    <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.4);position:relative;z-index:1;">
+      ✓ 100% gratuito &nbsp;|&nbsp; ✓ Entrega no WhatsApp &nbsp;|&nbsp; ✓ Sem spam
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 <strong>Negócios de Sucesso</strong>. Todos os direitos reservados. · CNPJ: 30.391.800/0001-41</div>
+    <div>Feito para quem leva o negócio a sério.</div>
+  </footer>
+
+  <script>
+  // ── CONFETTI ───────────────────────────────────────────────────────────────
+  function dispararConfetti() {
+    const c = document.getElementById('confetti-container');
+    const cols = ['#F5A623','#fff','#ffe480','#c8831a','#fff0bb','#f5d623'];
+    for (let i = 0; i < 60; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.cssText = [
+        `left:${Math.random()*100}vw`,
+        `top:${20 + Math.random()*40}vh`,
+        `background:${cols[Math.floor(Math.random()*cols.length)]}`,
+        `animation-delay:${Math.random()*.4}s`,
+        `animation-duration:${.7 + Math.random()*.5}s`,
+        `width:${6 + Math.random()*8}px`,
+        `height:${6 + Math.random()*8}px`,
+        `border-radius:${Math.random()>.5?'50%':'2px'}`,
+      ].join(';');
+      c.appendChild(el);
+      setTimeout(() => el.remove(), 1400);
+    }
+  }
+
+  // ── FORMULÁRIO ─────────────────────────────────────────────────────────────
+  function abrirWhatsApp(nome) {
+    fbq('track', 'Lead');
+    window.open(
+      'https://wa.me/5511945455842?text=Oi%20Henrique!%20Quero%20receber%20o%20checklist%20A%20Base%20Digital%20do%20Neg%C3%B3cio%20de%20Sucesso%20%F0%9F%93%8B%20Meu%20nome%20%C3%A9%20' +
+      encodeURIComponent(nome), '_blank'
+    );
+  }
+
+  function enviarFormulario() {
+    const nomeEl = document.getElementById('input-nome');
+    const telEl  = document.getElementById('input-telefone');
+    const btn    = document.getElementById('form-btn');
+    const nome   = nomeEl.value.trim();
+    const tel    = telEl.value.trim();
+
+    if (!nome) {
+      nomeEl.focus();
+      nomeEl.style.borderColor = 'rgba(245,80,35,.8)';
+      nomeEl.style.boxShadow   = '0 0 0 3px rgba(245,80,35,.12)';
+      return;
+    }
+    if (!tel || tel.replace(/\D/g,'').length < 10) {
+      telEl.focus();
+      telEl.style.borderColor = 'rgba(245,80,35,.8)';
+      telEl.style.boxShadow   = '0 0 0 3px rgba(245,80,35,.12)';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.classList.add('loading');
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      dispararConfetti();
+      setTimeout(() => abrirWhatsApp(nome), 500);
+    }, 700);
+  }
+
+  function ctaFinalClick() {
+    const nome = document.getElementById('input-nome').value.trim();
+    if (nome) {
+      dispararConfetti();
+      setTimeout(() => abrirWhatsApp(nome), 500);
+    } else {
+      document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => document.getElementById('input-nome').focus(), 650);
+    }
+  }
+
+  // ── INPUTS ─────────────────────────────────────────────────────────────────
+  document.getElementById('input-nome').addEventListener('blur', function() {
+    const nome = this.value.trim();
+    const lbl  = document.getElementById('btn-label');
+    lbl.textContent = nome
+      ? `Quero receber o checklist, ${nome.split(' ')[0]} →`
+      : 'Quero receber o checklist →';
+  });
+  ['input-nome','input-telefone'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.style.borderColor = ''; this.style.boxShadow = '';
+      if (id === 'input-nome' && !this.value.trim()) {
+        document.getElementById('btn-label').textContent = 'Quero receber o checklist →';
+      }
+    });
+  });
+  document.getElementById('input-telefone').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,11);
+    if      (v.length > 10) v = v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3');
+    else if (v.length > 6)  v = v.replace(/^(\d{2})(\d{4})(\d*)$/,'($1) $2-$3');
+    else if (v.length > 2)  v = v.replace(/^(\d{2})(\d*)$/,'($1) $2');
+    this.value = v;
+  });
+
+  // ── REVEAL (IntersectionObserver) ─────────────────────────────────────────
+  (function () {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
+
+  // ── NEURAL NETWORK CANVAS ─────────────────────────────────────────────────
+  (function () {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx    = canvas.getContext('2d');
+    const GOLD = '245,166,35', DIST = 150, SPEED = 0.38, GRID = 54;
+    let W, H, nodes = [], pulses = [], raf, tick = 0;
+
+    const rand = (a,b) => Math.random()*(b-a)+a;
+    const resize = () => { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; };
+    const initNodes = () => {
+      const n = Math.min(85, Math.max(45, Math.floor(W*H/10000)));
+      nodes = Array.from({length:n}, () => ({
+        x:rand(0,W), y:rand(0,H),
+        vx:rand(-SPEED,SPEED)||SPEED*.3, vy:rand(-SPEED,SPEED)||SPEED*.3,
+        r:rand(1.2,2.4), alpha:rand(0.5,0.9), hub:Math.random()<0.18,
+      }));
+      pulses = [];
+    };
+    const spawnPulse = (a,b) => pulses.push({ax:a.x,ay:a.y,bx:b.x,by:b.y,t:0,speed:rand(.008,.018)});
+    const centreW = (cx,cy) => { const dx=cx/W-.5,dy=cy/H-.5; return 1-Math.sqrt(dx*dx+dy*dy)*.75; };
+
+    function drawFrame() {
+      ctx.clearRect(0,0,W,H); tick++;
+      ctx.save(); ctx.strokeStyle=`rgba(${GOLD},.025)`; ctx.lineWidth=.5;
+      for(let x=0;x<W;x+=GRID){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(let y=0;y<H;y+=GRID){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      ctx.restore();
+
+      nodes.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0){p.x=0;p.vx=Math.abs(p.vx);} if(p.x>W){p.x=W;p.vx=-Math.abs(p.vx);}
+        if(p.y<0){p.y=0;p.vy=Math.abs(p.vy);} if(p.y>H){p.y=H;p.vy=-Math.abs(p.vy);}
+      });
+
+      for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i],b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist>=DIST) continue;
+        const prox=1-dist/DIST, alpha=prox*prox*centreW((a.x+b.x)/2,(a.y+b.y)/2)*0.28;
+        ctx.beginPath(); ctx.strokeStyle=`rgba(${GOLD},${alpha.toFixed(3)})`; ctx.lineWidth=prox*1.2;
+        ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        if(tick%3===0 && Math.random()<0.0018) spawnPulse(a,b);
+      }
+
+      pulses=pulses.filter(p=>p.t<=1);
+      pulses.forEach(p=>{
+        p.t+=p.speed;
+        const px=p.ax+(p.bx-p.ax)*p.t,py=p.ay+(p.by-p.ay)*p.t,fade=Math.sin(p.t*Math.PI);
+        const g=ctx.createRadialGradient(px,py,0,px,py,8);
+        g.addColorStop(0,`rgba(${GOLD},${(fade*.55).toFixed(2)})`); g.addColorStop(1,`rgba(${GOLD},0)`);
+        ctx.beginPath(); ctx.arc(px,py,8,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+        ctx.beginPath(); ctx.arc(px,py,2,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,210,100,${(fade*.9).toFixed(2)})`; ctx.fill();
+      });
+
+      nodes.forEach(p=>{
+        const r=p.hub?p.r*1.7:p.r, haloR=r*(p.hub?5:4);
+        const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,haloR);
+        grd.addColorStop(0,`rgba(${GOLD},${(p.alpha*.4).toFixed(2)})`); grd.addColorStop(1,`rgba(${GOLD},0)`);
+        ctx.beginPath(); ctx.arc(p.x,p.y,haloR,0,Math.PI*2); ctx.fillStyle=grd; ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x,p.y,r,0,Math.PI*2);
+        ctx.fillStyle=p.hub?`rgba(255,210,100,${p.alpha.toFixed(2)})`:`rgba(${GOLD},${p.alpha.toFixed(2)})`; ctx.fill();
+      });
+
+      raf=requestAnimationFrame(drawFrame);
+    }
+
+    const obs=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){if(!raf)drawFrame();}
+      else{cancelAnimationFrame(raf);raf=null;}
+    },{threshold:0});
+    obs.observe(canvas);
+    window.addEventListener('resize',()=>{cancelAnimationFrame(raf);raf=null;resize();initNodes();drawFrame();});
+    resize(); initNodes(); drawFrame();
+  })();
+
+  // ── GSAP ──────────────────────────────────────────────────────────────────
+  window.addEventListener('load', () => {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set('#navbar', { opacity: 0, y: -12 });
+    gsap.timeline({ defaults: { ease: 'power3.out' } })
+      .to('#navbar',        { opacity: 1, y: 0,  duration: .5 })
+      .from('#hero-badge',  { opacity: 0, y: -20, duration: .6 }, '-=.2')
+      .from('#hero-headline',{ opacity: 0, y: 48, duration: .85 }, '-=.3')
+      .from('#hero-sub',    { opacity: 0, y: 24,  duration: .7  }, '-=.45')
+      .from('#hero-actions',{ opacity: 0, y: 18,  duration: .6  }, '-=.4')
+      .from('#hero-right',  { opacity: 0, x: 40,  duration: .8  }, '-=.7');
+
+    gsap.to('.hero-glow', {
+      opacity: 0, scale: 1.2, ease: 'none',
+      scrollTrigger: { trigger: '#hero', start: '30% top', end: 'bottom top', scrub: true },
+    });
+  });
+  </script>
+</body>
+</html>
