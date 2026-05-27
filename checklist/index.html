@@ -726,6 +726,13 @@
     setTimeout(() => {
       btn.classList.remove('loading');
       btn.disabled = false;
+      fetch('https://crm.alavancamed.com.br/api/lead-inbound', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, telefone: tel, origem: 'Checklist' }),
+      })
+        .then(r => r.json().then(data => console.log('[CRM] lead-inbound resposta:', r.status, data)))
+        .catch(err => console.error('[CRM] lead-inbound erro:', err));
       dispararConfetti();
       setTimeout(() => abrirWhatsApp(nome), 500);
     }, 700);
