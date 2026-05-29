@@ -2,3 +2,10 @@
 .claude/
 planejamento-conteudo.html
 proposta.html
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
